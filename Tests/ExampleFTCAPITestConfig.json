@@ -1,0 +1,5 @@
+{
+    "season": "See Sources/SwiFTC/FTCSeason.swift for enum of possible season string values",
+    "username": "Enter your FTC API username here",
+    "token": "Enter your FTC API access token here"
+}
