@@ -8,37 +8,37 @@
 import Foundation
 
 public struct IntoTheDeepGameScores: Codable {
-    var blue: AllianceScores
-    var red: AllianceScores
+    public var blue: AllianceScores
+    public var red: AllianceScores
 
-    init() {
+    public init() {
         self.blue = .init()
         self.red = .init()
     }
 
-    struct AllianceScores: Codable {
-        var auto: StageScores
-        var teleop: StageScores
-        var minorFoulsFromOtherAllianceAwarded: Int
-        var majorFoulsFromOtherAllianceAwarded: Int
+    public struct AllianceScores: Codable {
+        public var auto: StageScores
+        public var teleop: StageScores
+        public var minorFoulsFromOtherAllianceAwarded: Int
+        public var majorFoulsFromOtherAllianceAwarded: Int
 
-        init() {
+        public init() {
             self.auto = .init()
             self.teleop = .init()
             self.minorFoulsFromOtherAllianceAwarded = 0
             self.majorFoulsFromOtherAllianceAwarded = 0
         }
 
-        struct StageScores: Codable {
-            var samplesNet: Int
-            var samplesLow: Int
-            var samplesHigh: Int
-            var specimenLow: Int
-            var specimenHigh: Int
-            var team1Location: Location
-            var team2Location: Location
+        public struct StageScores: Codable {
+            public var samplesNet: Int
+            public var samplesLow: Int
+            public var samplesHigh: Int
+            public var specimenLow: Int
+            public var specimenHigh: Int
+            public var team1Location: Location
+            public var team2Location: Location
 
-            init() {
+            public init() {
                 self.samplesNet = 0
                 self.samplesLow = 0
                 self.samplesHigh = 0
@@ -48,18 +48,18 @@ public struct IntoTheDeepGameScores: Codable {
                 self.team2Location = .none
             }
 
-            enum Location: String, Codable, RawRepresentable {
+            public enum Location: String, Codable, RawRepresentable {
                 case none = "None"
                 case oZone = "Observation Zone"
                 case aZone = "Ascent Zone"
                 case l2 = "Level 2"
                 case l3 = "Level 3"
 
-                var autoDescription: String {
+                public var autoDescription: String {
                     self.rawValue
                 }
 
-                var teleopDescription: String {
+                public var teleopDescription: String {
                     switch self {
                     case .oZone:
                         "O-Zone"
@@ -70,7 +70,7 @@ public struct IntoTheDeepGameScores: Codable {
                     }
                 }
 
-                func description(_ stage: GameScoringStageV1) -> String {
+                public func description(_ stage: GameScoringStageV1) -> String {
                     switch stage {
                     case .auto:
                         return self.autoDescription
@@ -79,7 +79,7 @@ public struct IntoTheDeepGameScores: Codable {
                     }
                 }
 
-                var icon: String {
+                public var icon: String {
                     switch self {
                     case .none:
                         "nosign"
@@ -94,7 +94,7 @@ public struct IntoTheDeepGameScores: Codable {
                     }
                 }
 
-                var points: Int {
+                public var points: Int {
                     switch self {
                     case .none:
                         0
@@ -110,7 +110,7 @@ public struct IntoTheDeepGameScores: Codable {
                 }
             }
 
-            var total: Int {
+            public var total: Int {
                 return self.samplesNet * 2
                     + self.samplesLow * 4
                     + self.samplesHigh * 8
@@ -121,18 +121,18 @@ public struct IntoTheDeepGameScores: Codable {
             }
         }
 
-        var foulPointsFromOtherAllianceAwarded: Int {
+        public var foulPointsFromOtherAllianceAwarded: Int {
             return self.minorFoulsFromOtherAllianceAwarded * 5 + self
                 .majorFoulsFromOtherAllianceAwarded * 15
         }
 
-        var total: Int {
+        public var total: Int {
             return self.auto.total + self.teleop.total
                 + self.foulPointsFromOtherAllianceAwarded
         }
     }
 
-    var total: Int {
+    public var total: Int {
         return self.blue.total + self.red.total
     }
 }

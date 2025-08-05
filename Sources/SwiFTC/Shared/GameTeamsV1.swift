@@ -8,17 +8,17 @@
 import Foundation
 
 public struct GameTeamsV1: Codable {
-    var blue: AllianceTeams
-    var red: AllianceTeams
+    public var blue: AllianceTeams
+    public var red: AllianceTeams
 
-    init() {
+    public init() {
         self.blue = .init()
         self.red = .init()
     }
 
-    struct AllianceTeams: Codable {
-        var one: String?
-        var two: String?
+    public struct AllianceTeams: Codable {
+        public var one: String?
+        public var two: String?
 
         init() {
             self.one = nil

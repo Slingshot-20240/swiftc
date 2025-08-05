@@ -8,7 +8,7 @@
 import Foundation
 
 public struct FTCAPIV2Data {
-    static var decoder: JSONDecoder {
+    public static var decoder: JSONDecoder {
         let decoder = JSONDecoder()
 
         decoder.dateDecodingStrategy = .custom { decoder in
@@ -47,239 +47,239 @@ public struct FTCAPIV2Data {
         return decoder
     }
 
-    static func decode<T: Codable>(_ type: T.Type, from data: Data) throws -> T
+    public static func decode<T: Codable>(_ type: T.Type, from data: Data) throws -> T
     {
         return try Self.decoder.decode(type, from: data)
     }
 
-    struct APIIndex: Codable {
-        let name: String?
-        let apiName: String?
-        let apiVersion: String?
-        let serviceMainifestName: String?
-        let serviceMainifestVersion: String?
-        let codePackageName: String?
-        let codePackageVersion: String?
-        let status: String?
-        let currentSeason: Int
-        let maxSeason: Int
+    public struct APIIndex: Codable {
+        public let name: String?
+        public let apiName: String?
+        public let apiVersion: String?
+        public let serviceMainifestName: String?
+        public let serviceMainifestVersion: String?
+        public let codePackageName: String?
+        public let codePackageVersion: String?
+        public let status: String?
+        public let currentSeason: Int
+        public let maxSeason: Int
     }
 
-    struct SeasonSummary: Codable {
-        let eventCount: Int
-        let gameName: String?
-        let kickoff: Date?
-        let rookieStart: Int
-        let teamCount: Int
-        let frcChampionships: [ChampionshipDescription]?
+    public struct SeasonSummary: Codable {
+        public let eventCount: Int
+        public let gameName: String?
+        public let kickoff: Date?
+        public let rookieStart: Int
+        public let teamCount: Int
+        public let frcChampionships: [ChampionshipDescription]?
 
-        struct ChampionshipDescription: Codable {
-            let name: String?
-            let startDate: Date?
-            let location: String?
+        public struct ChampionshipDescription: Codable {
+            public let name: String?
+            public let startDate: Date?
+            public let location: String?
         }
     }
 
-    struct LeagueListings: Codable {
-        let leagues: [League]?
-        let leagueCount: Int
+    public struct LeagueListings: Codable {
+        public let leagues: [League]?
+        public let leagueCount: Int
 
-        struct League: Codable {
-            let region: String?
-            let code: String?
-            let name: String?
-            let remote: Bool?
-            let parentLeagueCode: String?
-            let parentLeagueName: String?
-            let location: String?
+        public struct League: Codable {
+            public let region: String?
+            public let code: String?
+            public let name: String?
+            public let remote: Bool?
+            public let parentLeagueCode: String?
+            public let parentLeagueName: String?
+            public let location: String?
         }
     }
 
-    struct LeagueMembership: Codable {
-        let members: [Int]?
+    public struct LeagueMembership: Codable {
+        public let members: [Int]?
     }
 
-    struct LeagueRankings: Codable {
-        let rankings: [TeamRanking]?
+    public struct LeagueRankings: Codable {
+        public let rankings: [TeamRanking]?
     }
 
-    struct TeamListings: Codable {
-        let teams: [Team]?
-        let teamCountTotal: Int
-        let teamCountPage: Int
-        let pageCurrent: Int
-        let pageTotal: Int
+    public struct TeamListings: Codable {
+        public let teams: [Team]?
+        public let teamCountTotal: Int
+        public let teamCountPage: Int
+        public let pageCurrent: Int
+        public let pageTotal: Int
 
-        struct Team: Codable {
-            let teamNumber: Int
-            let displayTeamNumber: String?
-            let nameFull: String?
-            let nameShort: String?
-            let schoolName: String?
-            let city: String?
-            let stateProv: String?
-            let country: String?
-            let website: String?
-            let rookieYear: Int?
-            let robotName: String?
-            let districtCode: String?
-            let homeCMP: String?
-            let homeRegion: String?
-            let displayLocation: String?
+        public struct Team: Codable {
+            public let teamNumber: Int
+            public let displayTeamNumber: String?
+            public let nameFull: String?
+            public let nameShort: String?
+            public let schoolName: String?
+            public let city: String?
+            public let stateProv: String?
+            public let country: String?
+            public let website: String?
+            public let rookieYear: Int?
+            public let robotName: String?
+            public let districtCode: String?
+            public let homeCMP: String?
+            public let homeRegion: String?
+            public let displayLocation: String?
         }
     }
 
-    struct EventListings: Codable {
-        let events: [EventListings.Event]?
-        let eventCount: Int
+    public struct EventListings: Codable {
+        public let events: [EventListings.Event]?
+        public let eventCount: Int
 
-        struct Event: Codable {
-            let eventId: String
-            let code: String?
-            let divisionCode: String?
-            let name: String?
-            let remote: Bool
-            let hybrid: Bool
-            let fieldCount: Int
-            let published: Bool
-            let type: String?
-            let typeName: String?
-            let regionCode: String?
-            let leagueCode: String?
-            let districtCode: String?
-            let venue: String?
-            let address: String?
-            let city: String?
-            let stateprov: String?
-            let country: String?
-            let website: String?
-            let liveStreamUrl: String?
-            let coordinates: Coordinates?
-            let webcasts: [String]?
-            let timezone: String?
-            let dateStart: Date
-            let dateEnd: Date
+        public struct Event: Codable {
+            public let eventId: String
+            public let code: String?
+            public let divisionCode: String?
+            public let name: String?
+            public let remote: Bool
+            public let hybrid: Bool
+            public let fieldCount: Int
+            public let published: Bool
+            public let type: String?
+            public let typeName: String?
+            public let regionCode: String?
+            public let leagueCode: String?
+            public let districtCode: String?
+            public let venue: String?
+            public let address: String?
+            public let city: String?
+            public let stateprov: String?
+            public let country: String?
+            public let website: String?
+            public let liveStreamUrl: String?
+            public let coordinates: Coordinates?
+            public let webcasts: [String]?
+            public let timezone: String?
+            public let dateStart: Date
+            public let dateEnd: Date
 
-            struct Coordinates: Codable {
-                let type: String
-                let coordinates: [Double]
+            public struct Coordinates: Codable {
+                public let type: String
+                public let coordinates: [Double]
             }
         }
     }
 
-    struct HybridSchedule: Codable {
-        let schedule: [Match]?
+    public struct HybridSchedule: Codable {
+        public let schedule: [Match]?
 
-        struct Match: Codable {
-            let description: String?
-            let tournamentLevel: TournamentLevel?
-            let series: Int
-            let matchNumber: Int
-            let startTime: Date?
-            let actualStartTime: Date?
-            let postResultTime: Date?
-            let scoreRedFinal: Int?
-            let scoreRedFoul: Int?
-            let scoreRedAuto: Int?
-            let scoreBlueFinal: Int?
-            let scoreBlueFoul: Int?
-            let scoreBlueAuto: Int?
-            let scoreBlueDriveControlled: Int?
-            let scoreBlueEndgame: Int?
-            let redWins: Bool?
-            let blueWins: Bool?
-            let teams: [Team]?
+        public struct Match: Codable {
+            public let description: String?
+            public let tournamentLevel: TournamentLevel?
+            public let series: Int
+            public let matchNumber: Int
+            public let startTime: Date?
+            public let actualStartTime: Date?
+            public let postResultTime: Date?
+            public let scoreRedFinal: Int?
+            public let scoreRedFoul: Int?
+            public let scoreRedAuto: Int?
+            public let scoreBlueFinal: Int?
+            public let scoreBlueFoul: Int?
+            public let scoreBlueAuto: Int?
+            public let scoreBlueDriveControlled: Int?
+            public let scoreBlueEndgame: Int?
+            public let redWins: Bool?
+            public let blueWins: Bool?
+            public let teams: [Team]?
 
-            struct Team: Codable {
-                let teamNumber: Int?
-                let displayTeamNumber: String?
-                let station: String?
-                let surrogate: Bool
-                let noShow: Bool
-                let dq: Bool?
-                let onField: Bool?
-                let teamName: String?
+            public struct Team: Codable {
+                public let teamNumber: Int?
+                public let displayTeamNumber: String?
+                public let station: String?
+                public let surrogate: Bool
+                public let noShow: Bool
+                public let dq: Bool?
+                public let onField: Bool?
+                public let teamName: String?
             }
         }
     }
 
-    struct EventSchedule: Codable {
-        let schedule: [ScheduledMatch]?
+    public struct EventSchedule: Codable {
+        public let schedule: [ScheduledMatch]?
 
-        struct ScheduledMatch: Codable {
-            let description: String?
-            let field: String?
-            let tournamentLevel: TournamentLevel?
-            let startTime: Date?
-            let series: Int
-            let matchNumber: Int
-            let teams: [Team]?
-            let modifiedOn: Date?
+        public struct ScheduledMatch: Codable {
+            public let description: String?
+            public let field: String?
+            public let tournamentLevel: TournamentLevel?
+            public let startTime: Date?
+            public let series: Int
+            public let matchNumber: Int
+            public let teams: [Team]?
+            public let modifiedOn: Date?
 
-            struct Team: Codable {
-                let teamNumber: Int?
-                let displayTeamNumber: String?
-                let station: String?
-                let team: String?
-                let teamName: String?
-                let surrogate: Bool
-                let noShow: Bool
+            public struct Team: Codable {
+                public let teamNumber: Int?
+                public let displayTeamNumber: String?
+                public let station: String?
+                public let team: String?
+                public let teamName: String?
+                public let surrogate: Bool
+                public let noShow: Bool
             }
         }
     }
 
-    struct EventRankings: Codable {
-        let rankings: [TeamRanking]?
+    public struct EventRankings: Codable {
+        public let rankings: [TeamRanking]?
     }
 
-    struct EventAlliances: Codable {
-        let alliances: [Alliance]?
-        let count: Int
+    public struct EventAlliances: Codable {
+        public let alliances: [Alliance]?
+        public let count: Int
 
-        struct Alliance: Codable {
-            let number: Int
-            let name: String?
-            let captain: Int?
-            let captainDisplay: String?
-            let round1: Int?
-            let round1Display: String?
-            let round2: Int?
-            let round2Display: String?
-            let round3: Int?
-            let backup: Int?
-            let backupReplaced: Int?
+        public struct Alliance: Codable {
+            public let number: Int
+            public let name: String?
+            public let captain: Int?
+            public let captainDisplay: String?
+            public let round1: Int?
+            public let round1Display: String?
+            public let round2: Int?
+            public let round2Display: String?
+            public let round3: Int?
+            public let backup: Int?
+            public let backupReplaced: Int?
         }
     }
 
-    struct EventMatchResults: Codable {
-        let matches: [MatchResult]?
+    public struct EventMatchResults: Codable {
+        public let matches: [MatchResult]?
 
-        struct MatchResult: Codable {
-            let actualStartTime: String?
-            let description: String?
-            let tournamentLevel: TournamentLevel?
-            let series: Int
-            let matchNumber: Int
-            let scoreRedFinal: Int
-            let scoreRedFoul: Int
-            let scoreRedAuto: Int
-            let scoreBlueFinal: Int
-            let scoreBlueFoul: Int
-            let scoreBlueAuto: Int
-            let postResultTime: String?
-            let teams: [Team]?
-            let modifiedOn: String?
+        public struct MatchResult: Codable {
+            public let actualStartTime: String?
+            public let description: String?
+            public let tournamentLevel: TournamentLevel?
+            public let series: Int
+            public let matchNumber: Int
+            public let scoreRedFinal: Int
+            public let scoreRedFoul: Int
+            public let scoreRedAuto: Int
+            public let scoreBlueFinal: Int
+            public let scoreBlueFoul: Int
+            public let scoreBlueAuto: Int
+            public let postResultTime: String?
+            public let teams: [Team]?
+            public let modifiedOn: String?
 
-            struct Team: Codable {
-                let teamNumber: Int
-                let station: String?
-                let dq: Bool
-                let onField: Bool
+            public struct Team: Codable {
+                public let teamNumber: Int
+                public let station: String?
+                public let dq: Bool
+                public let onField: Bool
             }
         }
     }
 
-    enum AnyScoreDetails {
+    public enum AnyScoreDetails {
         static func decode(
             for season: FTCSeason,
             from data: Data
@@ -375,254 +375,254 @@ public struct FTCAPIV2Data {
         case centerstageSingleTeam(ScoreDetails<Centerstage.SingleTeam>)
         case intoTheDeep(ScoreDetails<IntoTheDeep>)
 
-        struct Skystone: MatchScoreDetailsItem, Codable {
-            let matchLevel: FTCEventLevel
-            let matchSeries: Int
-            let matchNumber: Int
-            let alliances: [AllianceScores]?
+        public struct Skystone: MatchScoreDetailsItem, Codable {
+            public let matchLevel: FTCEventLevel
+            public let matchSeries: Int
+            public let matchNumber: Int
+            public let alliances: [AllianceScores]?
 
-            struct AllianceScores: Codable {
-                let alliance: String?
-                let robot1Navigated: Bool
-                let robot1Parked: Bool
-                let robot1CapstoneLevel: Int
-                let robot2Navigated: Bool
-                let robot2Parked: Bool
-                let robot2CapstoneLevel: Int
-                let autoStones: [Stone]?
-                let autoDelivered: Int
-                let autoReturned: Int
-                let firstReturnedIsSkystone: Bool
-                let autoPlaced: Int
-                let foundationRepositioned: Bool
-                let foundationMoved: Bool
-                let driverControlledDelivered: Int
-                let driverControlledReturned: Int
-                let driverControlledPlaced: Int
-                let tallestSkyscraper: Int
-                let autoDeliveryPoints: Int
-                let autoPlacedPoints: Int
-                let autonomousPoints: Int
-                let repositionedPoints: Int
-                let navigationPoints: Int
-                let driverControlledDeliveryPoints: Int
-                let driverControlledPlacedPoints: Int
-                let skyscraperBonusPoints: Int
-                let capstonePoints: Int
-                let driverControlledPoints: Int
-                let parkingPoints: Int
-                let endGamePoints: Int
-                let minorPenalties: Int
-                let majorPenalties: Int
-                let penaltyPoints: Int
-                let totalPoints: Int
+            public struct AllianceScores: Codable {
+                public let alliance: String?
+                public let robot1Navigated: Bool
+                public let robot1Parked: Bool
+                public let robot1CapstoneLevel: Int
+                public let robot2Navigated: Bool
+                public let robot2Parked: Bool
+                public let robot2CapstoneLevel: Int
+                public let autoStones: [Stone]?
+                public let autoDelivered: Int
+                public let autoReturned: Int
+                public let firstReturnedIsSkystone: Bool
+                public let autoPlaced: Int
+                public let foundationRepositioned: Bool
+                public let foundationMoved: Bool
+                public let driverControlledDelivered: Int
+                public let driverControlledReturned: Int
+                public let driverControlledPlaced: Int
+                public let tallestSkyscraper: Int
+                public let autoDeliveryPoints: Int
+                public let autoPlacedPoints: Int
+                public let autonomousPoints: Int
+                public let repositionedPoints: Int
+                public let navigationPoints: Int
+                public let driverControlledDeliveryPoints: Int
+                public let driverControlledPlacedPoints: Int
+                public let skyscraperBonusPoints: Int
+                public let capstonePoints: Int
+                public let driverControlledPoints: Int
+                public let parkingPoints: Int
+                public let endGamePoints: Int
+                public let minorPenalties: Int
+                public let majorPenalties: Int
+                public let penaltyPoints: Int
+                public let totalPoints: Int
             }
 
-            enum Stone: String, Codable {
+            public enum Stone: String, Codable {
                 case none = "NONE"
                 case stone = "STONE"
                 case skystone = "SKYSTONE"
             }
         }
 
-        struct UltimateGoal {
-            struct Alliance: MatchScoreDetailsItem, Codable {
-                let matchLevel: FTCEventLevel
-                let matchSeries: Int
-                let matchNumber: Int
-                let alliances: [AllianceScores]?
+        public struct UltimateGoal {
+            public struct Alliance: MatchScoreDetailsItem, Codable {
+                public let matchLevel: FTCEventLevel
+                public let matchSeries: Int
+                public let matchNumber: Int
+                public let alliances: [AllianceScores]?
 
-                struct AllianceScores: Codable {
-                    let adjust: Int
-                    let dcPoints: Int
-                    let autoPoints: Int
-                    let dcTowerLow: Int
-                    let dcTowerMid: Int
-                    let dcTowerHigh: Int
-                    let navigated1: Bool
-                    let navigated2: Bool
-                    let wobbleDelivered1: Bool
-                    let wobbleDelivered2: Bool
-                    let autoTowerLow: Int
-                    let autoTowerMid: Int
-                    let autoTowerHigh: Int
-                    let autoTowerPoints: Int
-                    let autoPowerShotLeft: Bool
-                    let autoPowerShotCenter: Bool
-                    let autoPowerShotRight: Bool
-                    let autoPowerShotPoints: Int
-                    let wobbleRings1: Int
-                    let wobbleRings2: Int
-                    let wobbleEnd1: Int
-                    let wobbleEnd2: Int
-                    let wobbleEndPoints: Int
-                    let wobbleRingPoints: Int
-                    let autoWobblePoints: Int
-                    let endPowerShotLeft: Bool
-                    let endPowerShotCenter: Bool
-                    let endPowerShotRight: Bool
-                    let endPowerShotPoints: Int
-                    let penaltyPoints: Int
-                    let majorPenalties: Int
-                    let minorPenalties: Int
-                    let navigationPoints: Int
-                    let endgamePoints: Int
-                    let totalPoints: Int
-                    let alliance: String?
-                    let team: Int
+                public struct AllianceScores: Codable {
+                    public let adjust: Int
+                    public let dcPoints: Int
+                    public let autoPoints: Int
+                    public let dcTowerLow: Int
+                    public let dcTowerMid: Int
+                    public let dcTowerHigh: Int
+                    public let navigated1: Bool
+                    public let navigated2: Bool
+                    public let wobbleDelivered1: Bool
+                    public let wobbleDelivered2: Bool
+                    public let autoTowerLow: Int
+                    public let autoTowerMid: Int
+                    public let autoTowerHigh: Int
+                    public let autoTowerPoints: Int
+                    public let autoPowerShotLeft: Bool
+                    public let autoPowerShotCenter: Bool
+                    public let autoPowerShotRight: Bool
+                    public let autoPowerShotPoints: Int
+                    public let wobbleRings1: Int
+                    public let wobbleRings2: Int
+                    public let wobbleEnd1: Int
+                    public let wobbleEnd2: Int
+                    public let wobbleEndPoints: Int
+                    public let wobbleRingPoints: Int
+                    public let autoWobblePoints: Int
+                    public let endPowerShotLeft: Bool
+                    public let endPowerShotCenter: Bool
+                    public let endPowerShotRight: Bool
+                    public let endPowerShotPoints: Int
+                    public let penaltyPoints: Int
+                    public let majorPenalties: Int
+                    public let minorPenalties: Int
+                    public let navigationPoints: Int
+                    public let endgamePoints: Int
+                    public let totalPoints: Int
+                    public let alliance: String?
+                    public let team: Int
                 }
             }
 
-            struct SingleTeam: MatchScoreDetailsItem, Codable {
-                let matchLevel: FTCEventLevel
-                let matchNumber: Int
-                let teamNumber: Int
-                let scores: Scores
+            public struct SingleTeam: MatchScoreDetailsItem, Codable {
+                public let matchLevel: FTCEventLevel
+                public let matchNumber: Int
+                public let teamNumber: Int
+                public let scores: Scores
 
-                struct Scores: Codable {
-                    let adjust: Int
-                    let dcPoints: Int
-                    let autoPoints: Int
-                    let dcTowerLow: Int
-                    let dcTowerMid: Int
-                    let dcTowerHigh: Int
-                    let navigated1: Bool
-                    let navigated2: Bool
-                    let wobbleDelivered1: Bool
-                    let wobbleDelivered2: Bool
-                    let autoTowerLow: Int
-                    let autoTowerMid: Int
-                    let autoTowerHigh: Int
-                    let autoTowerPoints: Int
-                    let autoPowerShotLeft: Bool
-                    let autoPowerShotCenter: Bool
-                    let autoPowerShotRight: Bool
-                    let autoPowerShotPoints: Int
-                    let wobbleRings1: Int
-                    let wobbleRings2: Int
-                    let wobbleEnd1: Int
-                    let wobbleEnd2: Int
-                    let wobbleEndPoints: Int
-                    let wobbleRingPoints: Int
-                    let autoWobblePoints: Int
-                    let endPowerShotLeft: Bool
-                    let endPowerShotCenter: Bool
-                    let endPowerShotRight: Bool
-                    let endPowerShotPoints: Int
-                    let penaltyPoints: Int
-                    let majorPenalties: Int
-                    let minorPenalties: Int
-                    let navigationPoints: Int
-                    let endgamePoints: Int
-                    let totalPoints: Int
+                public struct Scores: Codable {
+                    public let adjust: Int
+                    public let dcPoints: Int
+                    public let autoPoints: Int
+                    public let dcTowerLow: Int
+                    public let dcTowerMid: Int
+                    public let dcTowerHigh: Int
+                    public let navigated1: Bool
+                    public let navigated2: Bool
+                    public let wobbleDelivered1: Bool
+                    public let wobbleDelivered2: Bool
+                    public let autoTowerLow: Int
+                    public let autoTowerMid: Int
+                    public let autoTowerHigh: Int
+                    public let autoTowerPoints: Int
+                    public let autoPowerShotLeft: Bool
+                    public let autoPowerShotCenter: Bool
+                    public let autoPowerShotRight: Bool
+                    public let autoPowerShotPoints: Int
+                    public let wobbleRings1: Int
+                    public let wobbleRings2: Int
+                    public let wobbleEnd1: Int
+                    public let wobbleEnd2: Int
+                    public let wobbleEndPoints: Int
+                    public let wobbleRingPoints: Int
+                    public let autoWobblePoints: Int
+                    public let endPowerShotLeft: Bool
+                    public let endPowerShotCenter: Bool
+                    public let endPowerShotRight: Bool
+                    public let endPowerShotPoints: Int
+                    public let penaltyPoints: Int
+                    public let majorPenalties: Int
+                    public let minorPenalties: Int
+                    public let navigationPoints: Int
+                    public let endgamePoints: Int
+                    public let totalPoints: Int
                 }
             }
         }
 
-        struct FreightFrenzy {
-            struct Alliance: MatchScoreDetailsItem, Codable {
-                let matchLevel: FTCEventLevel
-                let matchSeries: Int
-                let matchNumber: Int
-                let randomization: Int
-                let alliances: [AllianceScores]?
+        public struct FreightFrenzy {
+            public struct Alliance: MatchScoreDetailsItem, Codable {
+                public let matchLevel: FTCEventLevel
+                public let matchSeries: Int
+                public let matchNumber: Int
+                public let randomization: Int
+                public let alliances: [AllianceScores]?
 
-                struct AllianceScores: Codable {
-                    let alliance: String?
-                    let barcodeElement1: BarcodeElement
-                    let barcodeElement2: BarcodeElement
-                    let carousel: Bool
-                    let autoNavigated1: AutoNavigatedStatus
-                    let autoNavigated2: AutoNavigatedStatus
-                    let autoBonus1: Bool
-                    let autoBonus2: Bool
-                    let autoStorageFreight: Int
-                    let autoFreight1: Int
-                    let autoFreight2: Int
-                    let autoFreight3: Int
-                    let driverControlledStorageFreight: Int
-                    let driverControlledFreight1: Int
-                    let driverControlledFreight2: Int
-                    let driverControlledFreight3: Int
-                    let sharedFreight: Int
-                    let endgameDelivered: Int
-                    let allianceBalanced: Bool
-                    let sharedUnbalanced: Bool
-                    let endgameParked1: EndgameParkedStatus
-                    let endgameParked2: EndgameParkedStatus
-                    let capped: Int
-                    let minorPenalties: Int
-                    let majorPenalties: Int
-                    let carouselPoints: Int
-                    let autoNavigationPoints: Int
-                    let autoFreightPoints: Int
-                    let autoBonusPoints: Int
-                    let driverControlledAllianceHubPoints: Int
-                    let driverControlledSharedHubPoints: Int
-                    let driverControlledStoragePoints: Int
-                    let endgameDeliveryPoints: Int
-                    let allianceBalancedPoints: Int
-                    let sharedUnbalancedPoints: Int
-                    let endgameParkingPoints: Int
-                    let cappingPoints: Int
-                    let autoPoints: Int
-                    let driverControlledPoints: Int
-                    let endgamePoints: Int
-                    let penaltyPoints: Int
-                    let totalPoints: Int
+                public struct AllianceScores: Codable {
+                    public let alliance: String?
+                    public let barcodeElement1: BarcodeElement
+                    public let barcodeElement2: BarcodeElement
+                    public let carousel: Bool
+                    public let autoNavigated1: AutoNavigatedStatus
+                    public let autoNavigated2: AutoNavigatedStatus
+                    public let autoBonus1: Bool
+                    public let autoBonus2: Bool
+                    public let autoStorageFreight: Int
+                    public let autoFreight1: Int
+                    public let autoFreight2: Int
+                    public let autoFreight3: Int
+                    public let driverControlledStorageFreight: Int
+                    public let driverControlledFreight1: Int
+                    public let driverControlledFreight2: Int
+                    public let driverControlledFreight3: Int
+                    public let sharedFreight: Int
+                    public let endgameDelivered: Int
+                    public let allianceBalanced: Bool
+                    public let sharedUnbalanced: Bool
+                    public let endgameParked1: EndgameParkedStatus
+                    public let endgameParked2: EndgameParkedStatus
+                    public let capped: Int
+                    public let minorPenalties: Int
+                    public let majorPenalties: Int
+                    public let carouselPoints: Int
+                    public let autoNavigationPoints: Int
+                    public let autoFreightPoints: Int
+                    public let autoBonusPoints: Int
+                    public let driverControlledAllianceHubPoints: Int
+                    public let driverControlledSharedHubPoints: Int
+                    public let driverControlledStoragePoints: Int
+                    public let endgameDeliveryPoints: Int
+                    public let allianceBalancedPoints: Int
+                    public let sharedUnbalancedPoints: Int
+                    public let endgameParkingPoints: Int
+                    public let cappingPoints: Int
+                    public let autoPoints: Int
+                    public let driverControlledPoints: Int
+                    public let endgamePoints: Int
+                    public let penaltyPoints: Int
+                    public let totalPoints: Int
                 }
             }
 
-            struct SingleTeam: MatchScoreDetailsItem, Codable {
-                var matchLevel: FTCEventLevel
-                var matchNumber: Int
-                var randomization: Int
-                var teamNumber: Int
-                var scores: Scores
+            public struct SingleTeam: MatchScoreDetailsItem, Codable {
+                public var matchLevel: FTCEventLevel
+                public var matchNumber: Int
+                public var randomization: Int
+                public var teamNumber: Int
+                public var scores: Scores
 
-                struct Scores: Codable {
-                    var barcodeElement: BarcodeElement
-                    var carousel: Bool
-                    var autoNavigated: AutoNavigatedStatus
-                    var autoBonus: Bool
-                    var autoStorageFreight: Int
-                    var autoFreight1: Int
-                    var autoFreight2: Int
-                    var autoFreight3: Int
-                    var driverControlledStorageFreight: Int
-                    var driverControlledFreight1: Int
-                    var driverControlledFreight2: Int
-                    var driverControlledFreight3: Int
-                    var endgameDelivered: Int
-                    var allianceBalanced: Bool
-                    var endgameParked: EndgameParkedStatus
-                    var capped: Int
-                    var minorPenalties: Int
-                    var majorPenalties: Int
-                    var carouselPoints: Int
-                    var autoNavigationPoints: Int
-                    var autoFreightPoints: Int
-                    var autoBonusPoints: Int
-                    var driverControlledAllianceHubPoints: Int
-                    var driverControlledStoragePoints: Int
-                    var endgameDeliveryPoints: Int
-                    var allianceBalancedPoints: Int
-                    var endgameParkingPoints: Int
-                    var cappingPoints: Int
-                    var autoPoints: Int
-                    var driverControlledPoints: Int
-                    var endgamePoints: Int
-                    var penaltyPoints: Int
-                    var totalPoints: Int
+                public struct Scores: Codable {
+                    public var barcodeElement: BarcodeElement
+                    public var carousel: Bool
+                    public var autoNavigated: AutoNavigatedStatus
+                    public var autoBonus: Bool
+                    public var autoStorageFreight: Int
+                    public var autoFreight1: Int
+                    public var autoFreight2: Int
+                    public var autoFreight3: Int
+                    public var driverControlledStorageFreight: Int
+                    public var driverControlledFreight1: Int
+                    public var driverControlledFreight2: Int
+                    public var driverControlledFreight3: Int
+                    public var endgameDelivered: Int
+                    public var allianceBalanced: Bool
+                    public var endgameParked: EndgameParkedStatus
+                    public var capped: Int
+                    public var minorPenalties: Int
+                    public var majorPenalties: Int
+                    public var carouselPoints: Int
+                    public var autoNavigationPoints: Int
+                    public var autoFreightPoints: Int
+                    public var autoBonusPoints: Int
+                    public var driverControlledAllianceHubPoints: Int
+                    public var driverControlledStoragePoints: Int
+                    public var endgameDeliveryPoints: Int
+                    public var allianceBalancedPoints: Int
+                    public var endgameParkingPoints: Int
+                    public var cappingPoints: Int
+                    public var autoPoints: Int
+                    public var driverControlledPoints: Int
+                    public var endgamePoints: Int
+                    public var penaltyPoints: Int
+                    public var totalPoints: Int
                 }
             }
 
-            enum BarcodeElement: String, Codable {
+            public enum BarcodeElement: String, Codable {
                 case duck = "DUCK"
                 case teamShippingElement = "TEAM_SHIPPING_ELEMENT"
             }
 
-            enum AutoNavigatedStatus: String, Codable {
+            public enum AutoNavigatedStatus: String, Codable {
                 case none = "NONE"
                 case inStorage = "IN_STORAGE"
                 case completelyInStorage = "COMPLETELY_IN_STORAGE"
@@ -630,113 +630,113 @@ public struct FTCAPIV2Data {
                 case completelyInWarehouse = "COMPLETELY_IN_WAREHOUSE"
             }
 
-            enum EndgameParkedStatus: String, Codable {
+            public enum EndgameParkedStatus: String, Codable {
                 case none = "NONE"
                 case inWarehouse = "IN_WAREHOUSE"
                 case completelyInWarehouse = "COMPLETELY_IN_WAREHOUSE"
             }
         }
 
-        struct Powerplay {
-            struct Alliance: MatchScoreDetailsItem, Codable {
-                var matchLevel: FTCEventLevel
-                var matchSeries: Int
-                var matchNumber: Int
-                var randomization: Int
-                var alliances: [AllianceScores]?
+        public struct Powerplay {
+            public struct Alliance: MatchScoreDetailsItem, Codable {
+                public var matchLevel: FTCEventLevel
+                public var matchSeries: Int
+                public var matchNumber: Int
+                public var randomization: Int
+                public var alliances: [AllianceScores]?
 
-                struct AllianceScores: Codable {
-                    var sideOfField: FieldSide
-                    var initSignalSleeve1: Bool
-                    var initSignalSleeve2: Bool
-                    var robot1Auto: AutoNavigation
-                    var robot2Auto: AutoNavigation
-                    var autoTerminal: Int
-                    var autoJunctions: [[[JunctionElement]]]?
-                    var dcJunctions: [[[JunctionElement]]]?
-                    var dcTerminalNear: Int
-                    var dcTerminalFar: Int
-                    var egNavigated1: Bool
-                    var egNavigated2: Bool
-                    var minorPenalties: Int
-                    var majorPenalties: Int
-                    var autoNavigationPoints: Int
-                    var signalBonusPoints: Int
-                    var autoJunctionConePoints: Int
-                    var autoTerminalConePoints: Int
-                    var dcJunctionConePoints: Int
-                    var dcTerminalConePoints: Int
-                    var ownershipPoints: Int
-                    var circuitPoints: Int
-                    var egNavigationPoints: Int
-                    var autoPoints: Int
-                    var dcPoints: Int
-                    var endgamePoints: Int
-                    var penaltyPointsCommitted: Int
-                    var prePenaltyTotal: Int
-                    var autoJunctionCones: [Int]?
-                    var dcJunctionCones: [Int]?
-                    var beacons: Int
-                    var ownedJunctions: Int
-                    var circuit: Bool
-                    var totalPoints: Int
-                    var alliance: String?
-                    var team: Int
+                public struct AllianceScores: Codable {
+                    public var sideOfField: FieldSide
+                    public var initSignalSleeve1: Bool
+                    public var initSignalSleeve2: Bool
+                    public var robot1Auto: AutoNavigation
+                    public var robot2Auto: AutoNavigation
+                    public var autoTerminal: Int
+                    public var autoJunctions: [[[JunctionElement]]]?
+                    public var dcJunctions: [[[JunctionElement]]]?
+                    public var dcTerminalNear: Int
+                    public var dcTerminalFar: Int
+                    public var egNavigated1: Bool
+                    public var egNavigated2: Bool
+                    public var minorPenalties: Int
+                    public var majorPenalties: Int
+                    public var autoNavigationPoints: Int
+                    public var signalBonusPoints: Int
+                    public var autoJunctionConePoints: Int
+                    public var autoTerminalConePoints: Int
+                    public var dcJunctionConePoints: Int
+                    public var dcTerminalConePoints: Int
+                    public var ownershipPoints: Int
+                    public var circuitPoints: Int
+                    public var egNavigationPoints: Int
+                    public var autoPoints: Int
+                    public var dcPoints: Int
+                    public var endgamePoints: Int
+                    public var penaltyPointsCommitted: Int
+                    public var prePenaltyTotal: Int
+                    public var autoJunctionCones: [Int]?
+                    public var dcJunctionCones: [Int]?
+                    public var beacons: Int
+                    public var ownedJunctions: Int
+                    public var circuit: Bool
+                    public var totalPoints: Int
+                    public var alliance: String?
+                    public var team: Int
                 }
             }
 
-            struct SingleTeam: MatchScoreDetailsItem, Codable {
-                var matchLevel: FTCEventLevel
-                var matchNumber: Int
-                var randomization: Int
-                var teamNumber: Int
-                var scores: Scores
+            public struct SingleTeam: MatchScoreDetailsItem, Codable {
+                public var matchLevel: FTCEventLevel
+                public var matchNumber: Int
+                public var randomization: Int
+                public var teamNumber: Int
+                public var scores: Scores
 
-                struct Scores: Codable {
-                    var initSignalSleeve: Bool
-                    var robotAuto: AutoNavigation
-                    var autoTerminal: Int
-                    var autoJunctions: [[[JunctionElement]]]?
-                    var dcJunctions: [[[JunctionElement]]]?
-                    var dcTerminal: Int
-                    var egNavigated: Bool
-                    var minorPenalties: Int
-                    var majorPenalties: Int
-                    var autoNavigationPoints: Int
-                    var signalBonusPoints: Int
-                    var autoJunctionConePoints: Int
-                    var autoTerminalConePoints: Int
-                    var dcJunctionConePoints: Int
-                    var dcTerminalConePoints: Int
-                    var ownershipPoints: Int
-                    var circuitPoints: Int
-                    var egNavigationPoints: Int
-                    var autoPoints: Int
-                    var dcPoints: Int
-                    var endgamePoints: Int
-                    var penaltyPointsCommitted: Int
-                    var prePenaltyTotal: Int
-                    var autoJunctionCones: [Int]?
-                    var dcJunctionCones: [Int]?
-                    var beacons: Int
-                    var ownedJunctions: Int
-                    var circuit: Bool
-                    var totalPoints: Int
+                public struct Scores: Codable {
+                    public var initSignalSleeve: Bool
+                    public var robotAuto: AutoNavigation
+                    public var autoTerminal: Int
+                    public var autoJunctions: [[[JunctionElement]]]?
+                    public var dcJunctions: [[[JunctionElement]]]?
+                    public var dcTerminal: Int
+                    public var egNavigated: Bool
+                    public var minorPenalties: Int
+                    public var majorPenalties: Int
+                    public var autoNavigationPoints: Int
+                    public var signalBonusPoints: Int
+                    public var autoJunctionConePoints: Int
+                    public var autoTerminalConePoints: Int
+                    public var dcJunctionConePoints: Int
+                    public var dcTerminalConePoints: Int
+                    public var ownershipPoints: Int
+                    public var circuitPoints: Int
+                    public var egNavigationPoints: Int
+                    public var autoPoints: Int
+                    public var dcPoints: Int
+                    public var endgamePoints: Int
+                    public var penaltyPointsCommitted: Int
+                    public var prePenaltyTotal: Int
+                    public var autoJunctionCones: [Int]?
+                    public var dcJunctionCones: [Int]?
+                    public var beacons: Int
+                    public var ownedJunctions: Int
+                    public var circuit: Bool
+                    public var totalPoints: Int
                 }
             }
 
-            enum FieldSide: String, Codable {
+            public enum FieldSide: String, Codable {
                 case scoringSide = "SCORING_SIDE"
                 case audienceSide = "AUDIENCE_SIDE"
             }
 
-            enum AutoNavigation: String, Codable {
+            public enum AutoNavigation: String, Codable {
                 case none = "NONE"
                 case substationTerminal = "SUBSTATION_TERMINAL"
                 case signalZone = "SIGNAL_ZONE"
             }
 
-            enum JunctionElement: String, Codable {
+            public enum JunctionElement: String, Codable {
                 case myCone = "MY_CONE"
                 case otherCone = "OTHER_CONE"
                 case myR1Beacon = "MY_R1_BEACON"
@@ -746,156 +746,156 @@ public struct FTCAPIV2Data {
             }
         }
 
-        struct Centerstage {
-            struct Alliance: MatchScoreDetailsItem, Codable {
-                var matchLevel: FTCEventLevel
-                var matchSeries: Int
-                var matchNumber: Int
-                var randomization: Int
-                var alliances: [AllianceScores]?
+        public struct Centerstage {
+            public struct Alliance: MatchScoreDetailsItem, Codable {
+                public var matchLevel: FTCEventLevel
+                public var matchSeries: Int
+                public var matchNumber: Int
+                public var randomization: Int
+                public var alliances: [AllianceScores]?
 
-                struct AllianceScores: Codable {
-                    var initTeamProp1: Bool
-                    var initTeamProp2: Bool
-                    var robot1Auto: Bool
-                    var robot2Auto: Bool
-                    var spikeMarkPixel1: Bool
-                    var spikeMarkPixel2: Bool
-                    var targetBackdropPixel1: Bool
-                    var targetBackdropPixel2: Bool
-                    var autoBackdrop: Int
-                    var autoBackstage: Int
-                    var dcBackdrop: Int
-                    var dcBackstage: Int
-                    var mosaics: Int
-                    var maxSetLine: Int
-                    var egRobot1: EndGameLocation
-                    var egRobot2: EndGameLocation
-                    var drone1: Int
-                    var drone2: Int
-                    var minorPenalties: Int
-                    var majorPenalties: Int
-                    var autoNavigatingPoints: Int
-                    var autoRandomizationPoints: Int
-                    var autoBackstagePoints: Int
-                    var autoBackdropPoints: Int
-                    var dcBackdropPoints: Int
-                    var dcBackstagePoints: Int
-                    var mosaicPoints: Int
-                    var setBonusPoints: Int
-                    var egLocationPoints: Int
-                    var egDronePoints: Int
-                    var autoPoints: Int
-                    var dcPoints: Int
-                    var endgamePoints: Int
-                    var penaltyPointsCommitted: Int
-                    var prePenaltyTotal: Int
-                    var totalPoints: Int
-                    var alliance: String?
-                    var team: Int
+                public struct AllianceScores: Codable {
+                    public var initTeamProp1: Bool
+                    public var initTeamProp2: Bool
+                    public var robot1Auto: Bool
+                    public var robot2Auto: Bool
+                    public var spikeMarkPixel1: Bool
+                    public var spikeMarkPixel2: Bool
+                    public var targetBackdropPixel1: Bool
+                    public var targetBackdropPixel2: Bool
+                    public var autoBackdrop: Int
+                    public var autoBackstage: Int
+                    public var dcBackdrop: Int
+                    public var dcBackstage: Int
+                    public var mosaics: Int
+                    public var maxSetLine: Int
+                    public var egRobot1: EndGameLocation
+                    public var egRobot2: EndGameLocation
+                    public var drone1: Int
+                    public var drone2: Int
+                    public var minorPenalties: Int
+                    public var majorPenalties: Int
+                    public var autoNavigatingPoints: Int
+                    public var autoRandomizationPoints: Int
+                    public var autoBackstagePoints: Int
+                    public var autoBackdropPoints: Int
+                    public var dcBackdropPoints: Int
+                    public var dcBackstagePoints: Int
+                    public var mosaicPoints: Int
+                    public var setBonusPoints: Int
+                    public var egLocationPoints: Int
+                    public var egDronePoints: Int
+                    public var autoPoints: Int
+                    public var dcPoints: Int
+                    public var endgamePoints: Int
+                    public var penaltyPointsCommitted: Int
+                    public var prePenaltyTotal: Int
+                    public var totalPoints: Int
+                    public var alliance: String?
+                    public var team: Int
                 }
             }
 
-            struct SingleTeam: MatchScoreDetailsItem, Codable {
-                var matchLevel: FTCEventLevel
-                var matchNumber: Int
-                var randomization: Int
-                var teamNumber: Int
-                var scores: Scores
+            public struct SingleTeam: MatchScoreDetailsItem, Codable {
+                public var matchLevel: FTCEventLevel
+                public var matchNumber: Int
+                public var randomization: Int
+                public var teamNumber: Int
+                public var scores: Scores
 
-                struct Scores: Codable {
-                    var initTeamProp: Bool
-                    var robotAuto: Bool
-                    var spikeMarkPixel: Bool
-                    var targetBackdropPixel: Bool
-                    var autoBackdrop: Int
-                    var autoBackstage: Int
-                    var dcBackdrop: Int
-                    var dcBackstage: Int
-                    var mosaics: Int
-                    var maxSetLine: Int
-                    var egRobot: EndGameLocation
-                    var drone: Int
-                    var minorPenalties: Int
-                    var majorPenalties: Int
-                    var autoNavigatingPoints: Int
-                    var autoRandomizationPoints: Int
-                    var autoBackstagePoints: Int
-                    var autoBackdropPoints: Int
-                    var dcBackdropPoints: Int
-                    var dcBackstagePoints: Int
-                    var mosaicPoints: Int
-                    var setBonusPoints: Int
-                    var egLocationPoints: Int
-                    var egDronePoints: Int
-                    var autoPoints: Int
-                    var dcPoints: Int
-                    var endgamePoints: Int
-                    var penaltyPointsCommitted: Int
-                    var prePenaltyTotal: Int
-                    var totalPoints: Int
+                public struct Scores: Codable {
+                    public var initTeamProp: Bool
+                    public var robotAuto: Bool
+                    public var spikeMarkPixel: Bool
+                    public var targetBackdropPixel: Bool
+                    public var autoBackdrop: Int
+                    public var autoBackstage: Int
+                    public var dcBackdrop: Int
+                    public var dcBackstage: Int
+                    public var mosaics: Int
+                    public var maxSetLine: Int
+                    public var egRobot: EndGameLocation
+                    public var drone: Int
+                    public var minorPenalties: Int
+                    public var majorPenalties: Int
+                    public var autoNavigatingPoints: Int
+                    public var autoRandomizationPoints: Int
+                    public var autoBackstagePoints: Int
+                    public var autoBackdropPoints: Int
+                    public var dcBackdropPoints: Int
+                    public var dcBackstagePoints: Int
+                    public var mosaicPoints: Int
+                    public var setBonusPoints: Int
+                    public var egLocationPoints: Int
+                    public var egDronePoints: Int
+                    public var autoPoints: Int
+                    public var dcPoints: Int
+                    public var endgamePoints: Int
+                    public var penaltyPointsCommitted: Int
+                    public var prePenaltyTotal: Int
+                    public var totalPoints: Int
                 }
             }
 
-            enum EndGameLocation: String, Codable {
+            public enum EndGameLocation: String, Codable {
                 case none = "NONE"
                 case backstage = "BACKSTAGE"
                 case rigging = "RIGGING"
             }
         }
 
-        struct IntoTheDeep: MatchScoreDetailsItem, Codable {
-            var matchLevel: FTCEventLevel
-            var matchSeries: Int
-            var matchNumber: Int
-            var randomization: Int
-            var alliances: [AllianceScores]?
+        public struct IntoTheDeep: MatchScoreDetailsItem, Codable {
+            public var matchLevel: FTCEventLevel
+            public var matchSeries: Int
+            public var matchNumber: Int
+            public var randomization: Int
+            public var alliances: [AllianceScores]?
 
-            struct AllianceScores: Codable {
-                var robot1Auto: AutoLocation
-                var robot2Auto: AutoLocation
+            public struct AllianceScores: Codable {
+                public var robot1Auto: AutoLocation
+                public var robot2Auto: AutoLocation
 
-                var autoSampleNet: Int
-                var autoSampleLow: Int
-                var autoSampleHigh: Int
-                var autoSpecimenLow: Int
-                var autoSpecimenHigh: Int
-                var teleopSampleNet: Int
-                var teleopSampleLow: Int
-                var teleopSampleHigh: Int
-                var teleopSpecimenLow: Int
-                var teleopSpecimenHigh: Int
+                public var autoSampleNet: Int
+                public var autoSampleLow: Int
+                public var autoSampleHigh: Int
+                public var autoSpecimenLow: Int
+                public var autoSpecimenHigh: Int
+                public var teleopSampleNet: Int
+                public var teleopSampleLow: Int
+                public var teleopSampleHigh: Int
+                public var teleopSpecimenLow: Int
+                public var teleopSpecimenHigh: Int
 
-                var robot1Teleop: TeleopLocation
-                var robot2Teleop: TeleopLocation
+                public var robot1Teleop: TeleopLocation
+                public var robot2Teleop: TeleopLocation
 
-                var minorFouls: Int
-                var majorFouls: Int
+                public var minorFouls: Int
+                public var majorFouls: Int
 
-                var autoSamplePoints: Int
-                var autoSpecimenPoints: Int
-                var teleopSamplePoints: Int
-                var teleopSpecimenPoints: Int
-                var teleopParkPoints: Int
-                var teleopAscentPoints: Int
-                var autoPoints: Int
-                var teleopPoints: Int
-                var endGamePoints: Int
-                var foulPointsCommitted: Int
-                var preFoulTotal: Int
-                var totalPoints: Int
+                public var autoSamplePoints: Int
+                public var autoSpecimenPoints: Int
+                public var teleopSamplePoints: Int
+                public var teleopSpecimenPoints: Int
+                public var teleopParkPoints: Int
+                public var teleopAscentPoints: Int
+                public var autoPoints: Int
+                public var teleopPoints: Int
+                public var endGamePoints: Int
+                public var foulPointsCommitted: Int
+                public var preFoulTotal: Int
+                public var totalPoints: Int
 
-                var alliance: String?
-                var team: Int
+                public var alliance: String?
+                public var team: Int
             }
 
-            enum AutoLocation: String, Codable {
+            public enum AutoLocation: String, Codable {
                 case none = "NONE"
                 case observationZone = "OBSERVATION_ZONE"
                 case ascent = "ASCENT"
             }
 
-            enum TeleopLocation: String, Codable {
+            public enum TeleopLocation: String, Codable {
                 case none = "NONE"
                 case observationZone = "OBSERVATION_ZONE"
                 case ascent1 = "ASCENT_1"
@@ -905,21 +905,21 @@ public struct FTCAPIV2Data {
         }
     }
 
-    struct ScoreDetails<T: MatchScoreDetailsItem>: Codable {
-        var matchScores: [T]?
+    public struct ScoreDetails<T: MatchScoreDetailsItem>: Codable {
+        public var matchScores: [T]?
     }
 
-    struct AllianceSelectionDetails: Codable {
-        let selections: [Selection]?
-        let count: Int
+    public struct AllianceSelectionDetails: Codable {
+        public let selections: [Selection]?
+        public let count: Int
 
-        struct Selection: Codable {
-            let index: Int
-            let team: Int
-            let result: SelectionResult
+        public struct Selection: Codable {
+            public let index: Int
+            public let team: Int
+            public let result: SelectionResult
         }
 
-        enum SelectionResult: String, Codable {
+        public enum SelectionResult: String, Codable {
             case accept = "ACCEPT"
             case decline = "DECLINE"
             case remove = "REMOVE"
@@ -927,76 +927,76 @@ public struct FTCAPIV2Data {
         }
     }
 
-    struct AwardsListing: Codable {
-        let awards: [Award]?
+    public struct AwardsListing: Codable {
+        public let awards: [Award]?
 
-        struct Award: Codable {
-            let awardId: Int
-            let name: String?
-            let description: String?
-            let forPerson: Bool
+        public struct Award: Codable {
+            public let awardId: Int
+            public let name: String?
+            public let description: String?
+            public let forPerson: Bool
         }
     }
 
-    struct ReceivedAwards: Codable {
-        let awards: [AwardAssignment]?
+    public struct ReceivedAwards: Codable {
+        public let awards: [AwardAssignment]?
 
-        struct AwardAssignment: Codable {
-            let awardId: Int
-            let teamId: Int?
-            let teamProfileId: Int?
-            let eventId: Int?
-            let eventDivisionId: Int?
-            let eventCode: String?
-            let name: String?
-            let series: Int
-            let teamNumber: Int?
-            let schoolName: String?
-            let fullTeamName: String?
-            let person: String?
+        public struct AwardAssignment: Codable {
+            public let awardId: Int
+            public let teamId: Int?
+            public let teamProfileId: Int?
+            public let eventId: Int?
+            public let eventDivisionId: Int?
+            public let eventCode: String?
+            public let name: String?
+            public let series: Int
+            public let teamNumber: Int?
+            public let schoolName: String?
+            public let fullTeamName: String?
+            public let person: String?
         }
     }
 
-    struct EventAdvancement: Codable {
-        let advancesTo: String?
-        let slots: Int
-        let advancement: [AdvancementOrder]?
+    public struct EventAdvancement: Codable {
+        public let advancesTo: String?
+        public let slots: Int
+        public let advancement: [AdvancementOrder]?
     }
 
-    typealias AdvancementSource = [AdvancementSourceItem]
+    public typealias AdvancementSource = [AdvancementSourceItem]
 
-    struct AdvancementSourceItem: Codable {
-        let advancedFrom: String?
-        let advancedFromRegion: String?
-        let slots: Int
-        let advancement: [AdvancementOrder]?
+    public struct AdvancementSourceItem: Codable {
+        public let advancedFrom: String?
+        public let advancedFromRegion: String?
+        public let slots: Int
+        public let advancement: [AdvancementOrder]?
     }
 
-    struct TeamRanking: Codable {
-        let rank: Int
-        let teamNumber: Int
-        let displayTeamNumber: String?
-        let teamName: String?
-        let sortOrder1: Double
-        let sortOrder2: Double
-        let sortOrder3: Double
-        let sortOrder4: Double
-        let sortOrder5: Double
-        let sortOrder6: Double
-        let wins: Int
-        let losses: Int
-        let ties: Int
-        let qualAverage: Double
-        let dq: Int
-        let matchesPlayed: Int
-        let matchesCounted: Int
+    public struct TeamRanking: Codable {
+        public let rank: Int
+        public let teamNumber: Int
+        public let displayTeamNumber: String?
+        public let teamName: String?
+        public let sortOrder1: Double
+        public let sortOrder2: Double
+        public let sortOrder3: Double
+        public let sortOrder4: Double
+        public let sortOrder5: Double
+        public let sortOrder6: Double
+        public let wins: Int
+        public let losses: Int
+        public let ties: Int
+        public let qualAverage: Double
+        public let dq: Int
+        public let matchesPlayed: Int
+        public let matchesCounted: Int
     }
 
-    enum TournamentLevel: String, Codable, RawRepresentable {
+    public enum TournamentLevel: String, Codable, RawRepresentable {
         case qualification = "QUALIFICATION"
         case playoff = "PLAYOFF"
 
-        var parameterValue: String {
+        public var parameterValue: String {
             switch self {
             case .qualification:
                 "qual"
@@ -1006,18 +1006,18 @@ public struct FTCAPIV2Data {
         }
     }
 
-    struct AdvancementOrder: Codable {
-        let team: Int?
-        let teamId: Int?
-        let teamProfileId: Int?
-        let teamInternalId: UUID?
-        let displayTeam: String?
-        let slot: Int
-        let criteria: String?
-        let declined: Bool
-        let status: APIAdvancementStatus
+    public struct AdvancementOrder: Codable {
+        public let team: Int?
+        public let teamId: Int?
+        public let teamProfileId: Int?
+        public let teamInternalId: UUID?
+        public let displayTeam: String?
+        public let slot: Int
+        public let criteria: String?
+        public let declined: Bool
+        public let status: APIAdvancementStatus
 
-        enum APIAdvancementStatus: String, Codable {
+        public enum APIAdvancementStatus: String, Codable {
             case null = "NULL"
             case first = "FIRST"
             case alreadyAdvancing = "ALREADY_ADVANCING"

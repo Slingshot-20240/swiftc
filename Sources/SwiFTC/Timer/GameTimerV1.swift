@@ -72,7 +72,7 @@ import Foundation
     public enum Stage {
         case standby, start, auto, transition, teleopJumpStart, teleop, finished
 
-        enum AdvancementError: Error {
+        public enum AdvancementError: Error {
             case atFinalStage
 
             var description: String {
@@ -83,7 +83,7 @@ import Foundation
             }
         }
 
-        var startSeconds: Int {
+        public var startSeconds: Int {
             switch self {
             case .start, .teleopJumpStart:
                 3
@@ -98,7 +98,7 @@ import Foundation
             }
         }
 
-        mutating func advance() throws -> Int {
+        public mutating func advance() throws -> Int {
             switch self {
             case .standby:
                 self = .start

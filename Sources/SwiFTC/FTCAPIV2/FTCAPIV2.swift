@@ -8,13 +8,13 @@
 import Foundation
 
 public struct FTCAPIV2 {
-    var season: FTCSeason
+    public var season: FTCSeason
     var endpoint: FTCAPIV2EndpointHelper
 
     var username: String
     var token: String
 
-    init(_ season: FTCSeason, username: String, token: String) async throws {
+    public init(_ season: FTCSeason, username: String, token: String) async throws {
         let endpoint = FTCAPIV2EndpointHelper(season)
 
         let (_, _, _) = try await URLSession.shared.FTCAPIV2Fetch(
@@ -30,7 +30,7 @@ public struct FTCAPIV2 {
         self.token = token
     }
 
-    func eventAdvancements(
+    public func eventAdvancements(
         at eventCode: String,
         excludeSkipped: Bool? = nil
     ) async throws -> FTCAPIV2Data.EventAdvancement {
@@ -50,7 +50,7 @@ public struct FTCAPIV2 {
         )
     }
 
-    func advancementSource(
+    public func advancementSource(
         at eventCode: String,
         includeDeclines: Bool? = nil
     ) async throws -> FTCAPIV2Data.AdvancementSource {
@@ -70,7 +70,7 @@ public struct FTCAPIV2 {
         )
     }
 
-    func leagueListings(
+    public func leagueListings(
         regionCode: String? = nil,
         leagueCode: String? = nil
     ) async throws -> FTCAPIV2Data.LeagueListings {
@@ -90,7 +90,7 @@ public struct FTCAPIV2 {
         )
     }
 
-    func leagueMembership(
+    public func leagueMembership(
         regionCode: String,
         leagueCode: String
     ) async throws -> FTCAPIV2Data.LeagueMembership {
@@ -110,7 +110,7 @@ public struct FTCAPIV2 {
         )
     }
 
-    func leagueRankings(
+    public func leagueRankings(
         regionCode: String,
         leagueCode: String
     ) async throws -> FTCAPIV2Data.LeagueRankings {
@@ -130,7 +130,7 @@ public struct FTCAPIV2 {
         )
     }
 
-    func apiIndex() async throws -> FTCAPIV2Data.APIIndex {
+    public func apiIndex() async throws -> FTCAPIV2Data.APIIndex {
         let (data, _, _) = try await URLSession.shared
             .FTCAPIV2Fetch(
                 url: endpoint.apiIndex(),
@@ -144,7 +144,7 @@ public struct FTCAPIV2 {
         )
     }
 
-    func seasonSummary() async throws -> FTCAPIV2Data.SeasonSummary {
+    public func seasonSummary() async throws -> FTCAPIV2Data.SeasonSummary {
         let (data, _, _) = try await URLSession.shared
             .FTCAPIV2Fetch(
                 url: endpoint.seasonSummary(),
@@ -158,7 +158,7 @@ public struct FTCAPIV2 {
         )
     }
 
-    func eventListings(
+    public func eventListings(
         eventCode: String? = nil,
         teamNumber: String? = nil
     ) async throws -> FTCAPIV2Data.EventListings {
@@ -178,7 +178,7 @@ public struct FTCAPIV2 {
         )
     }
 
-    func teamListings(
+    public func teamListings(
         teamNumber: String? = nil,
         eventCode: String? = nil,
         state: String? = nil,
@@ -202,7 +202,7 @@ public struct FTCAPIV2 {
         )
     }
 
-    func hybridSchedule(
+    public func hybridSchedule(
         at eventCode: String,
         tournamentLevel: FTCAPIV2Data.TournamentLevel,
         start: Int? = nil,
@@ -226,7 +226,7 @@ public struct FTCAPIV2 {
         )
     }
 
-    func eventSchedule(
+    public func eventSchedule(
         at eventCode: String,
         tournamentLevel: FTCAPIV2Data.TournamentLevel,
         teamNumber: String? = nil,
@@ -242,7 +242,7 @@ public struct FTCAPIV2 {
         )
     }
 
-    func eventSchedule(
+    public func eventSchedule(
         at eventCode: String,
         tournamentLevel: FTCAPIV2Data.TournamentLevel? = nil,
         teamNumber: String,
@@ -284,7 +284,7 @@ public struct FTCAPIV2 {
         )
     }
 
-    func eventRankings(
+    public func eventRankings(
         at eventCode: String,
         teamNumber: Int? = nil,
         top: Int? = nil
@@ -306,7 +306,7 @@ public struct FTCAPIV2 {
         )
     }
 
-    func eventAlliances(
+    public func eventAlliances(
         at eventCode: String,
     ) async throws -> FTCAPIV2Data.EventAlliances {
         let (data, _, _) = try await URLSession.shared
@@ -322,7 +322,7 @@ public struct FTCAPIV2 {
         )
     }
 
-    func allianceSelectionDetails(
+    public func allianceSelectionDetails(
         at eventCode: String,
     ) async throws -> FTCAPIV2Data.AllianceSelectionDetails {
         let (data, _, _) = try await URLSession.shared
@@ -338,7 +338,7 @@ public struct FTCAPIV2 {
         )
     }
 
-    func eventMatchResults(
+    public func eventMatchResults(
         at eventCode: String,
         tournamentLevel: FTCAPIV2Data.TournamentLevel? = nil,
         teamNumber: String? = nil,
@@ -366,7 +366,7 @@ public struct FTCAPIV2 {
         )
     }
 
-    func scoreDetails(
+    public func scoreDetails(
         at eventCode: String,
         tournamentLevel: FTCAPIV2Data.TournamentLevel,
         teamNumber: String? = nil,
@@ -394,7 +394,7 @@ public struct FTCAPIV2 {
         )
     }
 
-    func awardListings() async throws -> FTCAPIV2Data.AwardsListing {
+    public func awardListings() async throws -> FTCAPIV2Data.AwardsListing {
         let (data, _, _) = try await URLSession.shared
             .FTCAPIV2Fetch(
                 url: endpoint.awardListings(),
@@ -408,7 +408,7 @@ public struct FTCAPIV2 {
         )
     }
 
-    func teamAwards(
+    public func teamAwards(
         for teamNumber: String,
     ) async throws -> FTCAPIV2Data.ReceivedAwards {
         let (data, _, _) = try await URLSession.shared
@@ -424,7 +424,7 @@ public struct FTCAPIV2 {
         )
     }
 
-    func teamEventAwards(
+    public func teamEventAwards(
         at eventCode: String,
         for teamNumber: String,
     ) async throws -> FTCAPIV2Data.ReceivedAwards {
@@ -441,7 +441,7 @@ public struct FTCAPIV2 {
         )
     }
 
-    func eventAwards(
+    public func eventAwards(
         at eventCode: String,
     ) async throws -> FTCAPIV2Data.ReceivedAwards {
         let (data, _, _) = try await URLSession.shared

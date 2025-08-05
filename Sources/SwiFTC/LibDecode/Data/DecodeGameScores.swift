@@ -8,48 +8,48 @@
 import Foundation
 
 public struct DecodeGameScores: Codable {
-    var blue: AllianceScores
-    var red: AllianceScores
+    public var blue: AllianceScores
+    public var red: AllianceScores
 
-    init() {
+    public init() {
         self.blue = .init()
         self.red = .init()
     }
 
-    struct AllianceScores: Codable {
-        var auto: StageScores
-        var teleop: StageScores
-        var minorFoulsFromOtherAllianceAwarded: Int
-        var majorFoulsFromOtherAllianceAwarded: Int
+    public struct AllianceScores: Codable {
+        public var auto: StageScores
+        public var teleop: StageScores
+        public var minorFoulsFromOtherAllianceAwarded: Int
+        public var majorFoulsFromOtherAllianceAwarded: Int
 
-        init() {
+        public init() {
             self.auto = .init()
             self.teleop = .init()
             self.minorFoulsFromOtherAllianceAwarded = 0
             self.majorFoulsFromOtherAllianceAwarded = 0
         }
 
-        struct StageScores: Codable {
-            var gameElementZone0: Int
-            var gameElementZone1: Int
-            var team1Location: Location
-            var team2Location: Location
+        public struct StageScores: Codable {
+            public var gameElementZone0: Int
+            public var gameElementZone1: Int
+            public var team1Location: Location
+            public var team2Location: Location
 
-            init() {
+            public init() {
                 self.gameElementZone0 = 0
                 self.gameElementZone1 = 0
                 self.team1Location = .none
                 self.team2Location = .none
             }
 
-            enum Location: String, Codable, RawRepresentable {
+            public enum Location: String, Codable, RawRepresentable {
                 case none = "None"
 
-                var autoDescription: String {
+                public var autoDescription: String {
                     self.rawValue
                 }
 
-                var teleopDescription: String {
+                public var teleopDescription: String {
                     switch self {
                     default:
                         self.rawValue
@@ -65,14 +65,14 @@ public struct DecodeGameScores: Codable {
                     }
                 }
 
-                var icon: String {
+                public var icon: String {
                     switch self {
                     case .none:
                         "nosign"
                     }
                 }
 
-                var points: Int {
+                public var points: Int {
                     switch self {
                     case .none:
                         0
@@ -80,7 +80,7 @@ public struct DecodeGameScores: Codable {
                 }
             }
 
-            var total: Int {
+            public var total: Int {
                 return self.gameElementZone0 * 0
                     + self.gameElementZone1 * 0
                     + self.team1Location.points
@@ -88,18 +88,18 @@ public struct DecodeGameScores: Codable {
             }
         }
 
-        var foulPointsFromOtherAllianceAwarded: Int {
+        public var foulPointsFromOtherAllianceAwarded: Int {
             return self.minorFoulsFromOtherAllianceAwarded * 5 + self
                 .majorFoulsFromOtherAllianceAwarded * 15
         }
 
-        var total: Int {
+        public var total: Int {
             return self.auto.total + self.teleop.total
                 + self.foulPointsFromOtherAllianceAwarded
         }
     }
 
-    var total: Int {
+    public var total: Int {
         return self.blue.total + self.red.total
     }
 }

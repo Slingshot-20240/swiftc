@@ -12,10 +12,10 @@ import SwiftData
 @Model
 public final class IntoTheDeepGameModel {
     public var id: String
-    var teams: GameTeamsV1
-    var scores: IntoTheDeepGameScores
+    public var teams: GameTeamsV1
+    public var scores: IntoTheDeepGameScores
 
-    init(scores: IntoTheDeepGameScores, teams: GameTeamsV1 = .init()) {
+    public init(scores: IntoTheDeepGameScores, teams: GameTeamsV1 = .init()) {
         self.id = UUID().uuidString
         self.teams = teams
         self.scores = scores

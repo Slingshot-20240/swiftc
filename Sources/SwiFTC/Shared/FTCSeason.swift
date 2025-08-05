@@ -16,7 +16,7 @@ public enum FTCSeason: String, Codable, Sendable, RawRepresentable {
     case intoTheDeep = "INTO THE DEEP"
     case decode = "DECODE"
 
-    var year: String {
+    public var year: String {
         switch self {
         case .skystone:
             "2019"
@@ -35,7 +35,7 @@ public enum FTCSeason: String, Codable, Sendable, RawRepresentable {
         }
     }
 
-    var name: String {
+    public var name: String {
         return self.rawValue
     }
 }

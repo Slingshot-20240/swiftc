@@ -11,7 +11,7 @@ public enum GameScoringStageV1: String, Hashable, CaseIterable, RawRepresentable
     case auto = "Auto"
     case teleop = "Teleop"
 
-    var timerStartStage: GameTimerV1.Stage {
+    public var timerStartStage: GameTimerV1.Stage {
         switch self {
         case .auto:
             .start
