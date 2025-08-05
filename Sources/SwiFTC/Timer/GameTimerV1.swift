@@ -13,10 +13,10 @@ import Foundation
 
     var timer: Timer?
 
-    @Published var timerStage: Stage
-    @Published var countdown: Int
-    @Published var paused: Bool
-    @Published var scoringStage: GameScoringStageV1
+    @Published public var timerStage: Stage
+    @Published public var countdown: Int
+    @Published public var paused: Bool
+    @Published public var scoringStage: GameScoringStageV1
 
     public var muted: Bool
     let countdownAudio: AVAudioPlayer
