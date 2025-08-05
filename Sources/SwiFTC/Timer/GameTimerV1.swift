@@ -9,7 +9,7 @@ import AVFoundation
 import Foundation
 
 @MainActor public class GameTimerV1: ObservableObject {
-    static var shared: GameTimerV1 = .init()
+    public static var shared: GameTimerV1 = .init()
 
     var timer: Timer?
 
@@ -18,7 +18,7 @@ import Foundation
     @Published var paused: Bool
     @Published var scoringStage: GameScoringStageV1
 
-    var muted: Bool
+    public var muted: Bool
     let countdownAudio: AVAudioPlayer
     let startAudio: AVAudioPlayer
     let transitionAudio: AVAudioPlayer
@@ -27,7 +27,7 @@ import Foundation
     let endgameAudio: AVAudioPlayer
     let endAudio: AVAudioPlayer
 
-    init(
+    public init(
         timer: Timer? = nil,
         timerStage: Stage = .standby,
         countdown: Int = 3,
@@ -69,7 +69,7 @@ import Foundation
         self.endAudio.prepareToPlay()
     }
 
-    enum Stage {
+    public enum Stage {
         case standby, start, auto, transition, teleopJumpStart, teleop, finished
 
         enum AdvancementError: Error {
@@ -118,11 +118,11 @@ import Foundation
         }
     }
 
-    var inProgress: Bool {
+    public var inProgress: Bool {
         self.timer != nil && ![.standby, .finished].contains(self.timerStage)
     }
 
-    func start(from stage: Stage = .start, mute: Bool = false) {
+    public func start(from stage: Stage = .start, mute: Bool = false) {
         self.reset()
         self.muted = mute
         self.timerStage = stage
@@ -133,7 +133,7 @@ import Foundation
         }
     }
 
-    func pause() {
+    public func pause() {
         self.timer?.invalidate()
         self.paused = !(self.timer?.isValid ?? true)
 
@@ -146,7 +146,7 @@ import Foundation
         self.endAudio.pause()
     }
 
-    func resume() {
+    public func resume() {
         if self.paused {
             self._startTimer()
 
@@ -241,7 +241,7 @@ import Foundation
         self.paused = !(self.timer?.isValid ?? true)
     }
 
-    func reset() {
+    public func reset() {
         self.timer?.invalidate()
         self.timer = nil
         self.timerStage = .standby
