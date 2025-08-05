@@ -29,7 +29,7 @@ Unlike our [DECODE™ Scorer](https://github.com/Slingshot-20240/decode-scorer-i
 
 To run the tests, you will need to setup configuration files. Simply remove the "Example" in the file name of each `Example******TestConfig.json` and replace their contents with your desired data and/or credentials.
 
-For example, to use the `FTCAPITests`, rename `ExampleFTCAPITestConfig.json` to `FTCAPITestConfig.json`, and replace the season, username, and token with your desired season and FTC API credentials:
+For example, to use `FTCAPIV2Tests`, rename `ExampleFTCAPIV2TestConfig.json` to `FTCAPIV2TestConfig.json`, and replace the season, username, and token with your desired season and FTC API credentials:
 
 ```json
 {
@@ -52,14 +52,6 @@ All names, brands, and content referenced are the intellectual property of their
 FTC API services: https://ftc-events.firstinspires.org/services/API
 
 ### Licenses
-
-#### Third-party Software
-
-[kewlbear/NumPy-iOS](https://github.com/kewlbear/NumPy-iOS) ([MIT License](https://github.com/kewlbear/NumPy-iOS/blob/main/LICENSE))
-
-[kewlbear/Python-iOS](https://github.com/kewlbear/Python-iOS) ([MIT License](https://github.com/kewlbear/Python-iOS/blob/kivy-ios/LICENSE))
-
-[pvieito/PythonKit](https://github.com/pvieito/PythonKit) ([Apache License 2.0](https://github.com/pvieito/PythonKit/blob/master/LICENSE.txt))
 
 #### SwiFTC Library presented by 20240 Slingshot
 

@@ -1,5 +1,5 @@
 //
-//  FTCAPIEndpointHelper.swift
+//  FTCAPIV2EndpointHelper.swift
 //  SwiFTC
 //
 //  Created by Jining Liu on 8/4/25.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FTCAPIEndpointHelper {
+struct FTCAPIV2EndpointHelper {
 
     let season: FTCSeason
     let baseUrl: URL
@@ -139,7 +139,7 @@ struct FTCAPIEndpointHelper {
 
     func hybridSchedule(
         at eventCode: String,
-        tournamentLevel: FTCAPIData.TournamentLevel,
+        tournamentLevel: FTCAPIV2Data.TournamentLevel,
         start: Int? = nil,
         end: Int? = nil
     ) -> URL {
@@ -161,7 +161,7 @@ struct FTCAPIEndpointHelper {
 
     func eventSchedule(
         at eventCode: String,
-        tournamentLevel: FTCAPIData.TournamentLevel? = nil,
+        tournamentLevel: FTCAPIV2Data.TournamentLevel? = nil,
         teamNumber: String? = nil,
         start: Int? = nil,
         end: Int? = nil
@@ -225,7 +225,7 @@ struct FTCAPIEndpointHelper {
 
     func eventMatchResults(
         at eventCode: String,
-        tournamentLevel: FTCAPIData.TournamentLevel? = nil,
+        tournamentLevel: FTCAPIV2Data.TournamentLevel? = nil,
         teamNumber: String? = nil,
         matchNumber: String? = nil,
         start: Int? = nil,
@@ -261,7 +261,7 @@ struct FTCAPIEndpointHelper {
 
     func scoreDetails(
         at eventCode: String,
-        tournamentLevel: FTCAPIData.TournamentLevel,
+        tournamentLevel: FTCAPIV2Data.TournamentLevel,
         teamNumber: String? = nil,
         matchNumber: String? = nil,
         start: Int? = nil,

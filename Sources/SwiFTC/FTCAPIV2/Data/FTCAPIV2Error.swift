@@ -1,5 +1,5 @@
 //
-//  FTCAPIError.swift
+//  FTCAPIV2Error.swift
 //  SwiFTC
 //
 //  Created by Jining Liu on 8/4/25.
@@ -7,8 +7,7 @@
 
 import Foundation
 
-public enum FTCAPIError: Error, CustomStringConvertible, Equatable {
-
+public enum FTCAPIV2Error: Error, CustomStringConvertible {
     case unauthorized
     case unableToLoad(String)
     case noData

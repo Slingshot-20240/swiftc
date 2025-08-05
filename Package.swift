@@ -19,14 +19,44 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "SwiFTC"
+            name: "SwiFTC",
+            resources: [
+                .copy("Timer/Audio/countdown.wav"),
+                .copy("Timer/Audio/end.wav"),
+                .copy("Timer/Audio/endgame.wav"),
+                .copy("Timer/Audio/pickup.wav"),
+                .copy("Timer/Audio/start.wav"),
+                .copy("Timer/Audio/teleop.wav"),
+                .copy("Timer/Audio/transition.wav"),
+            ]
+        ),
+        .target(
+            name: "SwiFTCTestErrors"
         ),
         .testTarget(
-            name: "FTCAPITests",
+            name: "FTCAPIV2Tests",
             dependencies: ["SwiFTC"],
             resources: [
-                .copy("FTCAPITestConfig.json")
+                .copy("FTCAPIV2TestConfig.json")
             ]
+        ),
+        .testTarget(
+            name: "LibIntoTheDeepTests",
+            dependencies: ["SwiFTC", "SwiFTCTestErrors"],
+            resources: [
+                .copy("LibIntoTheDeepTestData.json")
+            ]
+        ),
+        .testTarget(
+            name: "LibDecodeTests",
+            dependencies: ["SwiFTC", "SwiFTCTestErrors"],
+            resources: [
+                .copy("LibDecodeTestData.json")
+            ]
+        ),
+        .testTarget(
+            name: "GameTimerTests",
+            dependencies: ["SwiFTC"]
         ),
     ]
 )

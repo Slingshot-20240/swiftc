@@ -1,23 +1,30 @@
+//
+//  FTCAPIV2Tests.swift
+//  SwiFTC
+//
+//  Created by Jining Liu on 8/4/25.
+//
+
 import Foundation
 import Testing
 
 @testable import SwiFTC
 
-struct FTCAPITestConfig: Codable, Sendable {
+struct FTCAPIV2TestConfig: Codable, Sendable {
     let season: FTCSeason
     let username: String
     let token: String
 }
 
 let url = Bundle.module.url(
-    forResource: "FTCAPITestConfig",
+    forResource: "FTCAPIV2TestConfig",
     withExtension: "json"
 )!
-let data = try! Data(contentsOf: url)
-let config = try! JSONDecoder().decode(FTCAPITestConfig.self, from: data)
+let fileData = try! Data(contentsOf: url)
+let config = try! JSONDecoder().decode(FTCAPIV2TestConfig.self, from: fileData)
 
 @Test func eventAdvancementTest() async throws {
-    let ftc = try await FTCAPI(
+    let ftc = try await FTCAPIV2(
         config.season,
         username: config.username,
         token: config.token
@@ -27,7 +34,7 @@ let config = try! JSONDecoder().decode(FTCAPITestConfig.self, from: data)
 }
 
 @Test func advancementSourceTest() async throws {
-    let ftc = try await FTCAPI(
+    let ftc = try await FTCAPIV2(
         config.season,
         username: config.username,
         token: config.token
@@ -37,7 +44,7 @@ let config = try! JSONDecoder().decode(FTCAPITestConfig.self, from: data)
 }
 
 @Test func leagueListingsTest() async throws {
-    let ftc = try await FTCAPI(
+    let ftc = try await FTCAPIV2(
         config.season,
         username: config.username,
         token: config.token
@@ -47,7 +54,7 @@ let config = try! JSONDecoder().decode(FTCAPITestConfig.self, from: data)
 }
 
 @Test func leagueMembershipTest() async throws {
-    let ftc = try await FTCAPI(
+    let ftc = try await FTCAPIV2(
         config.season,
         username: config.username,
         token: config.token
@@ -57,7 +64,7 @@ let config = try! JSONDecoder().decode(FTCAPITestConfig.self, from: data)
 }
 
 @Test func leagueRankingsTest() async throws {
-    let ftc = try await FTCAPI(
+    let ftc = try await FTCAPIV2(
         config.season,
         username: config.username,
         token: config.token
@@ -67,7 +74,7 @@ let config = try! JSONDecoder().decode(FTCAPITestConfig.self, from: data)
 }
 
 @Test func apiIndexTest() async throws {
-    let ftc = try await FTCAPI(
+    let ftc = try await FTCAPIV2(
         config.season,
         username: config.username,
         token: config.token
@@ -77,7 +84,7 @@ let config = try! JSONDecoder().decode(FTCAPITestConfig.self, from: data)
 }
 
 @Test func seasonSummaryTest() async throws {
-    let ftc = try await FTCAPI(
+    let ftc = try await FTCAPIV2(
         config.season,
         username: config.username,
         token: config.token
@@ -87,7 +94,7 @@ let config = try! JSONDecoder().decode(FTCAPITestConfig.self, from: data)
 }
 
 @Test func eventListingsTest() async throws {
-    let ftc = try await FTCAPI(
+    let ftc = try await FTCAPIV2(
         config.season,
         username: config.username,
         token: config.token
@@ -97,7 +104,7 @@ let config = try! JSONDecoder().decode(FTCAPITestConfig.self, from: data)
 }
 
 @Test func teamListingsTest() async throws {
-    let ftc = try await FTCAPI(
+    let ftc = try await FTCAPIV2(
         config.season,
         username: config.username,
         token: config.token
@@ -107,7 +114,7 @@ let config = try! JSONDecoder().decode(FTCAPITestConfig.self, from: data)
 }
 
 @Test func hybridScheduleTest() async throws {
-    let ftc = try await FTCAPI(
+    let ftc = try await FTCAPIV2(
         config.season,
         username: config.username,
         token: config.token
@@ -122,7 +129,7 @@ let config = try! JSONDecoder().decode(FTCAPITestConfig.self, from: data)
 }
 
 @Test func eventScheduleTest() async throws {
-    let ftc = try await FTCAPI(
+    let ftc = try await FTCAPIV2(
         config.season,
         username: config.username,
         token: config.token
@@ -137,7 +144,7 @@ let config = try! JSONDecoder().decode(FTCAPITestConfig.self, from: data)
 }
 
 @Test func eventRankingsTest() async throws {
-    let ftc = try await FTCAPI(
+    let ftc = try await FTCAPIV2(
         config.season,
         username: config.username,
         token: config.token
@@ -147,7 +154,7 @@ let config = try! JSONDecoder().decode(FTCAPITestConfig.self, from: data)
 }
 
 @Test func eventAlliancesTest() async throws {
-    let ftc = try await FTCAPI(
+    let ftc = try await FTCAPIV2(
         config.season,
         username: config.username,
         token: config.token
@@ -157,7 +164,7 @@ let config = try! JSONDecoder().decode(FTCAPITestConfig.self, from: data)
 }
 
 @Test func allianceSelectionDetailsTest() async throws {
-    let ftc = try await FTCAPI(
+    let ftc = try await FTCAPIV2(
         config.season,
         username: config.username,
         token: config.token
@@ -167,7 +174,7 @@ let config = try! JSONDecoder().decode(FTCAPITestConfig.self, from: data)
 }
 
 @Test func eventMatchResultsTest() async throws {
-    let ftc = try await FTCAPI(
+    let ftc = try await FTCAPIV2(
         config.season,
         username: config.username,
         token: config.token
@@ -177,7 +184,7 @@ let config = try! JSONDecoder().decode(FTCAPITestConfig.self, from: data)
 }
 
 @Test func scoreDetailsTest() async throws {
-    let ftc = try await FTCAPI(
+    let ftc = try await FTCAPIV2(
         config.season,
         username: config.username,
         token: config.token
@@ -192,7 +199,7 @@ let config = try! JSONDecoder().decode(FTCAPITestConfig.self, from: data)
 }
 
 @Test func awardListingsTest() async throws {
-    let ftc = try await FTCAPI(
+    let ftc = try await FTCAPIV2(
         config.season,
         username: config.username,
         token: config.token
@@ -202,7 +209,7 @@ let config = try! JSONDecoder().decode(FTCAPITestConfig.self, from: data)
 }
 
 @Test func teamAwardsTest() async throws {
-    let ftc = try await FTCAPI(
+    let ftc = try await FTCAPIV2(
         config.season,
         username: config.username,
         token: config.token
@@ -212,7 +219,7 @@ let config = try! JSONDecoder().decode(FTCAPITestConfig.self, from: data)
 }
 
 @Test func teamEventAwardsTest() async throws {
-    let ftc = try await FTCAPI(
+    let ftc = try await FTCAPIV2(
         config.season,
         username: config.username,
         token: config.token
@@ -222,7 +229,7 @@ let config = try! JSONDecoder().decode(FTCAPITestConfig.self, from: data)
 }
 
 @Test func eventAwardsTest() async throws {
-    let ftc = try await FTCAPI(
+    let ftc = try await FTCAPIV2(
         config.season,
         username: config.username,
         token: config.token

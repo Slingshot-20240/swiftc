@@ -1,5 +1,5 @@
 //
-//  FTCAPIData.swift
+//  FTCAPIV2Data.swift
 //  SwiFTC
 //
 //  Created by Jining Liu on 8/4/25.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct FTCAPIData {
+public struct FTCAPIV2Data {
     static var decoder: JSONDecoder {
         let decoder = JSONDecoder()
 
@@ -284,7 +284,7 @@ public struct FTCAPIData {
             for season: FTCSeason,
             from data: Data
         ) throws -> AnyScoreDetails {
-            let decoder = FTCAPIData.decoder
+            let decoder = FTCAPIV2Data.decoder
 
             switch season {
             case .skystone:

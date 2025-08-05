@@ -1,5 +1,5 @@
 //
-//  FTCAPI.swift
+//  FTCAPIV2.swift
 //  SwiFTC
 //
 //  Created by Jining Liu on 8/3/25.
@@ -7,17 +7,17 @@
 
 import Foundation
 
-public struct FTCAPI {
+public struct FTCAPIV2 {
     var season: FTCSeason
-    var endpoint: FTCAPIEndpointHelper
+    var endpoint: FTCAPIV2EndpointHelper
 
     var username: String
     var token: String
 
     init(_ season: FTCSeason, username: String, token: String) async throws {
-        let endpoint = FTCAPIEndpointHelper(season)
+        let endpoint = FTCAPIV2EndpointHelper(season)
 
-        let (_, _, _) = try await URLSession.shared.ftcApiFetch(
+        let (_, _, _) = try await URLSession.shared.FTCAPIV2Fetch(
             url: endpoint.baseUrl,
             username: username,
             token: token
@@ -33,9 +33,9 @@ public struct FTCAPI {
     func eventAdvancements(
         at eventCode: String,
         excludeSkipped: Bool? = nil
-    ) async throws -> FTCAPIData.EventAdvancement {
+    ) async throws -> FTCAPIV2Data.EventAdvancement {
         let (data, _, _) = try await URLSession.shared
-            .ftcApiFetch(
+            .FTCAPIV2Fetch(
                 url: endpoint.eventAdvancement(
                     at: eventCode,
                     excludeSkipped: excludeSkipped
@@ -44,8 +44,8 @@ public struct FTCAPI {
                 token: token
             )
 
-        return try FTCAPIData.decode(
-            FTCAPIData.EventAdvancement.self,
+        return try FTCAPIV2Data.decode(
+            FTCAPIV2Data.EventAdvancement.self,
             from: data
         )
     }
@@ -53,9 +53,9 @@ public struct FTCAPI {
     func advancementSource(
         at eventCode: String,
         includeDeclines: Bool? = nil
-    ) async throws -> FTCAPIData.AdvancementSource {
+    ) async throws -> FTCAPIV2Data.AdvancementSource {
         let (data, _, _) = try await URLSession.shared
-            .ftcApiFetch(
+            .FTCAPIV2Fetch(
                 url: endpoint.advancementSource(
                     at: eventCode,
                     includeDeclines: includeDeclines
@@ -64,8 +64,8 @@ public struct FTCAPI {
                 token: token
             )
 
-        return try FTCAPIData.decode(
-            FTCAPIData.AdvancementSource.self,
+        return try FTCAPIV2Data.decode(
+            FTCAPIV2Data.AdvancementSource.self,
             from: data
         )
     }
@@ -73,9 +73,9 @@ public struct FTCAPI {
     func leagueListings(
         regionCode: String? = nil,
         leagueCode: String? = nil
-    ) async throws -> FTCAPIData.LeagueListings {
+    ) async throws -> FTCAPIV2Data.LeagueListings {
         let (data, _, _) = try await URLSession.shared
-            .ftcApiFetch(
+            .FTCAPIV2Fetch(
                 url: endpoint.leagueListings(
                     regionCode: regionCode,
                     leagueCode: leagueCode
@@ -84,8 +84,8 @@ public struct FTCAPI {
                 token: token
             )
 
-        return try FTCAPIData.decode(
-            FTCAPIData.LeagueListings.self,
+        return try FTCAPIV2Data.decode(
+            FTCAPIV2Data.LeagueListings.self,
             from: data
         )
     }
@@ -93,9 +93,9 @@ public struct FTCAPI {
     func leagueMembership(
         regionCode: String,
         leagueCode: String
-    ) async throws -> FTCAPIData.LeagueMembership {
+    ) async throws -> FTCAPIV2Data.LeagueMembership {
         let (data, _, _) = try await URLSession.shared
-            .ftcApiFetch(
+            .FTCAPIV2Fetch(
                 url: endpoint.leagueMembership(
                     regionCode: regionCode,
                     leagueCode: leagueCode
@@ -104,8 +104,8 @@ public struct FTCAPI {
                 token: token
             )
 
-        return try FTCAPIData.decode(
-            FTCAPIData.LeagueMembership.self,
+        return try FTCAPIV2Data.decode(
+            FTCAPIV2Data.LeagueMembership.self,
             from: data
         )
     }
@@ -113,9 +113,9 @@ public struct FTCAPI {
     func leagueRankings(
         regionCode: String,
         leagueCode: String
-    ) async throws -> FTCAPIData.LeagueRankings {
+    ) async throws -> FTCAPIV2Data.LeagueRankings {
         let (data, _, _) = try await URLSession.shared
-            .ftcApiFetch(
+            .FTCAPIV2Fetch(
                 url: endpoint.leagueRankings(
                     regionCode: regionCode,
                     leagueCode: leagueCode
@@ -124,36 +124,36 @@ public struct FTCAPI {
                 token: token
             )
 
-        return try FTCAPIData.decode(
-            FTCAPIData.LeagueRankings.self,
+        return try FTCAPIV2Data.decode(
+            FTCAPIV2Data.LeagueRankings.self,
             from: data
         )
     }
 
-    func apiIndex() async throws -> FTCAPIData.APIIndex {
+    func apiIndex() async throws -> FTCAPIV2Data.APIIndex {
         let (data, _, _) = try await URLSession.shared
-            .ftcApiFetch(
+            .FTCAPIV2Fetch(
                 url: endpoint.apiIndex(),
                 username: username,
                 token: token
             )
 
-        return try FTCAPIData.decode(
-            FTCAPIData.APIIndex.self,
+        return try FTCAPIV2Data.decode(
+            FTCAPIV2Data.APIIndex.self,
             from: data
         )
     }
 
-    func seasonSummary() async throws -> FTCAPIData.SeasonSummary {
+    func seasonSummary() async throws -> FTCAPIV2Data.SeasonSummary {
         let (data, _, _) = try await URLSession.shared
-            .ftcApiFetch(
+            .FTCAPIV2Fetch(
                 url: endpoint.seasonSummary(),
                 username: username,
                 token: token
             )
 
-        return try FTCAPIData.decode(
-            FTCAPIData.SeasonSummary.self,
+        return try FTCAPIV2Data.decode(
+            FTCAPIV2Data.SeasonSummary.self,
             from: data
         )
     }
@@ -161,9 +161,9 @@ public struct FTCAPI {
     func eventListings(
         eventCode: String? = nil,
         teamNumber: String? = nil
-    ) async throws -> FTCAPIData.EventListings {
+    ) async throws -> FTCAPIV2Data.EventListings {
         let (data, _, _) = try await URLSession.shared
-            .ftcApiFetch(
+            .FTCAPIV2Fetch(
                 url: endpoint.eventListings(
                     eventCode: eventCode,
                     teamNumber: teamNumber
@@ -172,8 +172,8 @@ public struct FTCAPI {
                 token: token
             )
 
-        return try FTCAPIData.decode(
-            FTCAPIData.EventListings.self,
+        return try FTCAPIV2Data.decode(
+            FTCAPIV2Data.EventListings.self,
             from: data
         )
     }
@@ -183,9 +183,9 @@ public struct FTCAPI {
         eventCode: String? = nil,
         state: String? = nil,
         page: String? = nil
-    ) async throws -> FTCAPIData.TeamListings {
+    ) async throws -> FTCAPIV2Data.TeamListings {
         let (data, _, _) = try await URLSession.shared
-            .ftcApiFetch(
+            .FTCAPIV2Fetch(
                 url: endpoint.teamListings(
                     teamNumber: teamNumber,
                     eventCode: eventCode,
@@ -196,20 +196,20 @@ public struct FTCAPI {
                 token: token
             )
 
-        return try FTCAPIData.decode(
-            FTCAPIData.TeamListings.self,
+        return try FTCAPIV2Data.decode(
+            FTCAPIV2Data.TeamListings.self,
             from: data
         )
     }
 
     func hybridSchedule(
         at eventCode: String,
-        tournamentLevel: FTCAPIData.TournamentLevel,
+        tournamentLevel: FTCAPIV2Data.TournamentLevel,
         start: Int? = nil,
         end: Int? = nil
-    ) async throws -> FTCAPIData.HybridSchedule {
+    ) async throws -> FTCAPIV2Data.HybridSchedule {
         let (data, _, _) = try await URLSession.shared
-            .ftcApiFetch(
+            .FTCAPIV2Fetch(
                 url: endpoint.hybridSchedule(
                     at: eventCode,
                     tournamentLevel: tournamentLevel,
@@ -220,19 +220,19 @@ public struct FTCAPI {
                 token: token
             )
 
-        return try FTCAPIData.decode(
-            FTCAPIData.HybridSchedule.self,
+        return try FTCAPIV2Data.decode(
+            FTCAPIV2Data.HybridSchedule.self,
             from: data
         )
     }
 
     func eventSchedule(
         at eventCode: String,
-        tournamentLevel: FTCAPIData.TournamentLevel,
+        tournamentLevel: FTCAPIV2Data.TournamentLevel,
         teamNumber: String? = nil,
         start: Int? = nil,
         end: Int? = nil
-    ) async throws -> FTCAPIData.EventSchedule {
+    ) async throws -> FTCAPIV2Data.EventSchedule {
         return try await self._eventSchedule(
             at: eventCode,
             tournamentLevel: tournamentLevel,
@@ -244,11 +244,11 @@ public struct FTCAPI {
 
     func eventSchedule(
         at eventCode: String,
-        tournamentLevel: FTCAPIData.TournamentLevel? = nil,
+        tournamentLevel: FTCAPIV2Data.TournamentLevel? = nil,
         teamNumber: String,
         start: Int? = nil,
         end: Int? = nil
-    ) async throws -> FTCAPIData.EventSchedule {
+    ) async throws -> FTCAPIV2Data.EventSchedule {
         return try await self._eventSchedule(
             at: eventCode,
             tournamentLevel: tournamentLevel,
@@ -260,13 +260,13 @@ public struct FTCAPI {
 
     private func _eventSchedule(
         at eventCode: String,
-        tournamentLevel: FTCAPIData.TournamentLevel? = nil,
+        tournamentLevel: FTCAPIV2Data.TournamentLevel? = nil,
         teamNumber: String? = nil,
         start: Int? = nil,
         end: Int? = nil
-    ) async throws -> FTCAPIData.EventSchedule {
+    ) async throws -> FTCAPIV2Data.EventSchedule {
         let (data, _, _) = try await URLSession.shared
-            .ftcApiFetch(
+            .FTCAPIV2Fetch(
                 url: endpoint.eventSchedule(
                     at: eventCode,
                     tournamentLevel: tournamentLevel,
@@ -278,8 +278,8 @@ public struct FTCAPI {
                 token: token
             )
 
-        return try FTCAPIData.decode(
-            FTCAPIData.EventSchedule.self,
+        return try FTCAPIV2Data.decode(
+            FTCAPIV2Data.EventSchedule.self,
             from: data
         )
     }
@@ -288,9 +288,9 @@ public struct FTCAPI {
         at eventCode: String,
         teamNumber: Int? = nil,
         top: Int? = nil
-    ) async throws -> FTCAPIData.EventRankings {
+    ) async throws -> FTCAPIV2Data.EventRankings {
         let (data, _, _) = try await URLSession.shared
-            .ftcApiFetch(
+            .FTCAPIV2Fetch(
                 url: endpoint.eventRankings(
                     at: eventCode,
                     teamNumber: teamNumber,
@@ -300,54 +300,54 @@ public struct FTCAPI {
                 token: token
             )
 
-        return try FTCAPIData.decode(
-            FTCAPIData.EventRankings.self,
+        return try FTCAPIV2Data.decode(
+            FTCAPIV2Data.EventRankings.self,
             from: data
         )
     }
 
     func eventAlliances(
         at eventCode: String,
-    ) async throws -> FTCAPIData.EventAlliances {
+    ) async throws -> FTCAPIV2Data.EventAlliances {
         let (data, _, _) = try await URLSession.shared
-            .ftcApiFetch(
+            .FTCAPIV2Fetch(
                 url: endpoint.eventAlliances(at: eventCode),
                 username: username,
                 token: token
             )
 
-        return try FTCAPIData.decode(
-            FTCAPIData.EventAlliances.self,
+        return try FTCAPIV2Data.decode(
+            FTCAPIV2Data.EventAlliances.self,
             from: data
         )
     }
 
     func allianceSelectionDetails(
         at eventCode: String,
-    ) async throws -> FTCAPIData.AllianceSelectionDetails {
+    ) async throws -> FTCAPIV2Data.AllianceSelectionDetails {
         let (data, _, _) = try await URLSession.shared
-            .ftcApiFetch(
+            .FTCAPIV2Fetch(
                 url: endpoint.allianceSelectionDetails(at: eventCode),
                 username: username,
                 token: token
             )
 
-        return try FTCAPIData.decode(
-            FTCAPIData.AllianceSelectionDetails.self,
+        return try FTCAPIV2Data.decode(
+            FTCAPIV2Data.AllianceSelectionDetails.self,
             from: data
         )
     }
 
     func eventMatchResults(
         at eventCode: String,
-        tournamentLevel: FTCAPIData.TournamentLevel? = nil,
+        tournamentLevel: FTCAPIV2Data.TournamentLevel? = nil,
         teamNumber: String? = nil,
         matchNumber: String? = nil,
         start: Int? = nil,
         end: Int? = nil
-    ) async throws -> FTCAPIData.EventMatchResults {
+    ) async throws -> FTCAPIV2Data.EventMatchResults {
         let (data, _, _) = try await URLSession.shared
-            .ftcApiFetch(
+            .FTCAPIV2Fetch(
                 url: endpoint.eventMatchResults(
                     at: eventCode,
                     tournamentLevel: tournamentLevel,
@@ -360,22 +360,22 @@ public struct FTCAPI {
                 token: token
             )
 
-        return try FTCAPIData.decode(
-            FTCAPIData.EventMatchResults.self,
+        return try FTCAPIV2Data.decode(
+            FTCAPIV2Data.EventMatchResults.self,
             from: data
         )
     }
 
     func scoreDetails(
         at eventCode: String,
-        tournamentLevel: FTCAPIData.TournamentLevel,
+        tournamentLevel: FTCAPIV2Data.TournamentLevel,
         teamNumber: String? = nil,
         matchNumber: String? = nil,
         start: Int? = nil,
         end: Int? = nil
-    ) async throws -> FTCAPIData.AnyScoreDetails {
+    ) async throws -> FTCAPIV2Data.AnyScoreDetails {
         let (data, _, _) = try await URLSession.shared
-            .ftcApiFetch(
+            .FTCAPIV2Fetch(
                 url: endpoint.scoreDetails(
                     at: eventCode,
                     tournamentLevel: tournamentLevel,
@@ -388,38 +388,38 @@ public struct FTCAPI {
                 token: token
             )
 
-        return try FTCAPIData.AnyScoreDetails.decode(
+        return try FTCAPIV2Data.AnyScoreDetails.decode(
             for: self.season,
             from: data
         )
     }
 
-    func awardListings() async throws -> FTCAPIData.AwardsListing {
+    func awardListings() async throws -> FTCAPIV2Data.AwardsListing {
         let (data, _, _) = try await URLSession.shared
-            .ftcApiFetch(
+            .FTCAPIV2Fetch(
                 url: endpoint.awardListings(),
                 username: username,
                 token: token
             )
 
-        return try FTCAPIData.decode(
-            FTCAPIData.AwardsListing.self,
+        return try FTCAPIV2Data.decode(
+            FTCAPIV2Data.AwardsListing.self,
             from: data
         )
     }
 
     func teamAwards(
         for teamNumber: String,
-    ) async throws -> FTCAPIData.ReceivedAwards {
+    ) async throws -> FTCAPIV2Data.ReceivedAwards {
         let (data, _, _) = try await URLSession.shared
-            .ftcApiFetch(
+            .FTCAPIV2Fetch(
                 url: endpoint.teamAwards(for: teamNumber),
                 username: username,
                 token: token
             )
 
-        return try FTCAPIData.decode(
-            FTCAPIData.ReceivedAwards.self,
+        return try FTCAPIV2Data.decode(
+            FTCAPIV2Data.ReceivedAwards.self,
             from: data
         )
     }
@@ -427,39 +427,39 @@ public struct FTCAPI {
     func teamEventAwards(
         at eventCode: String,
         for teamNumber: String,
-    ) async throws -> FTCAPIData.ReceivedAwards {
+    ) async throws -> FTCAPIV2Data.ReceivedAwards {
         let (data, _, _) = try await URLSession.shared
-            .ftcApiFetch(
+            .FTCAPIV2Fetch(
                 url: endpoint.teamEventAwards(at: eventCode, for: teamNumber),
                 username: username,
                 token: token
             )
 
-        return try FTCAPIData.decode(
-            FTCAPIData.ReceivedAwards.self,
+        return try FTCAPIV2Data.decode(
+            FTCAPIV2Data.ReceivedAwards.self,
             from: data
         )
     }
 
     func eventAwards(
         at eventCode: String,
-    ) async throws -> FTCAPIData.ReceivedAwards {
+    ) async throws -> FTCAPIV2Data.ReceivedAwards {
         let (data, _, _) = try await URLSession.shared
-            .ftcApiFetch(
+            .FTCAPIV2Fetch(
                 url: endpoint.eventAwards(at: eventCode),
                 username: username,
                 token: token
             )
 
-        return try FTCAPIData.decode(
-            FTCAPIData.ReceivedAwards.self,
+        return try FTCAPIV2Data.decode(
+            FTCAPIV2Data.ReceivedAwards.self,
             from: data
         )
     }
 }
 
 extension URLSession {
-    fileprivate func ftcApiFetch(url: URL, username: String, token: String)
+    fileprivate func FTCAPIV2Fetch(url: URL, username: String, token: String)
         async throws -> (Data, URLResponse, Int)
     {
         var request = URLRequest(url: url)
@@ -478,15 +478,15 @@ extension URLSession {
         let httpCode = (response as? HTTPURLResponse)?.statusCode
 
         guard let httpCode else {
-            throw FTCAPIError.unableToLoad("**Failed to get HTTP status code**")
+            throw FTCAPIV2Error.unableToLoad("**Failed to get HTTP status code**")
         }
 
         guard httpCode == 200 else {
             if httpCode == 401 {
-                throw FTCAPIError.unauthorized
+                throw FTCAPIV2Error.unauthorized
             }
 
-            throw FTCAPIError.unableToLoad(String(httpCode))
+            throw FTCAPIV2Error.unableToLoad(String(httpCode))
         }
 
         return (data, response, httpCode)
