@@ -1,16 +1,21 @@
-<h1 align="center">🤖 SwiFTC Library 🧑‍💻</h1>
+# 🤖 SwiFTC Library 🧑‍💻
 
-<p align="center">
-  The ultimate FTC data library for your Swift app.
-  <br />
-  presented by 20240 Slingshot
-</p>
+The **ultimate** FTC data library for your Swift app.  
+presented by **20240 Slingshot**
 
 > [!NOTE]
 > 🚧 This project is in early development. Please check back for more information.
 
 > [!WARNING]
 > This is the **development** branch. Please ensure you are on the right branch.
+
+## Usage
+
+To use SwiFTC in your project, add it as a package dependency using the Swift Package Manager.
+
+```
+https://github.com/Slingshot-20240/swiftc.git
+```
 
 ## Development
 
@@ -45,9 +50,7 @@ The above credentials are invalid and are for demonstration purposes only.
 
 ### Disclaimer
 
-This library is an independent project developed by FTC Team 20240 Slingshot and open-source contributors. It is not affiliated with, endorsed by, or officially connected to *FIRST*® (For Inspiration and Recognition of Science and Technology), the *FIRST*® Tech Challenge (FTC), Qualcomm, RTX (Raytheon Technologies), or any other sponsors, partners, or affiliates of these organizations.
-
-All names, brands, and content referenced are the intellectual property of their respective owners. Their use in this library is solely for identification purposes and does not imply endorsement.
+*FIRST®, FIRST® Tech Challenge, FTC®, FIRST® RISE℠, SKYSTONE℠, FIRST® GAME CHANGERS℠, ULTIMATE GOAL℠, FIRST® FORWARD℠, FREIGHT FRENZY℠, FIRST® ENERGIZE℠, POWERPLAY℠, FIRST® IN SHOW℠, CENTERSTAGE℠, FIRST® DIVE℠, INTO THE DEEP℠, FIRST® AGE™, and DECODE™, are trademarks of For Inspiration and Recognition of Science and Technology (FIRST®) (www.firstinspires.org). These trademarks are used by special permission of FIRST which is not overseeing, involved with, or responsible for this activity, product, or service. © 2025 FIRST®. Used by special permission. All rights reserved.*
 
 FTC API services: https://ftc-events.firstinspires.org/services/API
 
