@@ -52,7 +52,7 @@ public struct FTCAPIV2Data {
         return try Self.decoder.decode(type, from: data)
     }
 
-    public struct APIIndex: Codable {
+    public struct APIIndex: Codable, Hashable {
         public let name: String?
         public let apiName: String?
         public let apiVersion: String?
@@ -65,7 +65,7 @@ public struct FTCAPIV2Data {
         public let maxSeason: Int
     }
 
-    public struct SeasonSummary: Codable {
+    public struct SeasonSummary: Codable, Hashable {
         public let eventCount: Int
         public let gameName: String?
         public let kickoff: Date?
@@ -73,18 +73,18 @@ public struct FTCAPIV2Data {
         public let teamCount: Int
         public let frcChampionships: [ChampionshipDescription]?
 
-        public struct ChampionshipDescription: Codable {
+        public struct ChampionshipDescription: Codable, Hashable {
             public let name: String?
             public let startDate: Date?
             public let location: String?
         }
     }
 
-    public struct LeagueListings: Codable {
+    public struct LeagueListings: Codable, Hashable {
         public let leagues: [League]?
         public let leagueCount: Int
 
-        public struct League: Codable {
+        public struct League: Codable, Hashable {
             public let region: String?
             public let code: String?
             public let name: String?
@@ -95,22 +95,22 @@ public struct FTCAPIV2Data {
         }
     }
 
-    public struct LeagueMembership: Codable {
+    public struct LeagueMembership: Codable, Hashable {
         public let members: [Int]?
     }
 
-    public struct LeagueRankings: Codable {
+    public struct LeagueRankings: Codable, Hashable {
         public let rankings: [TeamRanking]?
     }
 
-    public struct TeamListings: Codable {
+    public struct TeamListings: Codable, Hashable {
         public let teams: [Team]?
         public let teamCountTotal: Int
         public let teamCountPage: Int
         public let pageCurrent: Int
         public let pageTotal: Int
 
-        public struct Team: Codable {
+        public struct Team: Codable, Hashable {
             public let teamNumber: Int
             public let displayTeamNumber: String?
             public let nameFull: String?
@@ -129,11 +129,11 @@ public struct FTCAPIV2Data {
         }
     }
 
-    public struct EventListings: Codable {
+    public struct EventListings: Codable, Hashable {
         public let events: [EventListings.Event]?
         public let eventCount: Int
 
-        public struct Event: Codable {
+        public struct Event: Codable, Hashable {
             public let eventId: String
             public let code: String?
             public let divisionCode: String?
@@ -160,17 +160,17 @@ public struct FTCAPIV2Data {
             public let dateStart: Date
             public let dateEnd: Date
 
-            public struct Coordinates: Codable {
+            public struct Coordinates: Codable, Hashable {
                 public let type: String
                 public let coordinates: [Double]
             }
         }
     }
 
-    public struct HybridSchedule: Codable {
+    public struct HybridSchedule: Codable, Hashable {
         public let schedule: [Match]?
 
-        public struct Match: Codable {
+        public struct Match: Codable, Hashable {
             public let description: String?
             public let tournamentLevel: TournamentLevel?
             public let series: Int
@@ -190,7 +190,7 @@ public struct FTCAPIV2Data {
             public let blueWins: Bool?
             public let teams: [Team]?
 
-            public struct Team: Codable {
+            public struct Team: Codable, Hashable {
                 public let teamNumber: Int?
                 public let displayTeamNumber: String?
                 public let station: String?
@@ -203,10 +203,10 @@ public struct FTCAPIV2Data {
         }
     }
 
-    public struct EventSchedule: Codable {
+    public struct EventSchedule: Codable, Hashable {
         public let schedule: [ScheduledMatch]?
 
-        public struct ScheduledMatch: Codable {
+        public struct ScheduledMatch: Codable, Hashable {
             public let description: String?
             public let field: String?
             public let tournamentLevel: TournamentLevel?
@@ -216,7 +216,7 @@ public struct FTCAPIV2Data {
             public let teams: [Team]?
             public let modifiedOn: Date?
 
-            public struct Team: Codable {
+            public struct Team: Codable, Hashable {
                 public let teamNumber: Int?
                 public let displayTeamNumber: String?
                 public let station: String?
@@ -228,15 +228,15 @@ public struct FTCAPIV2Data {
         }
     }
 
-    public struct EventRankings: Codable {
+    public struct EventRankings: Codable, Hashable {
         public let rankings: [TeamRanking]?
     }
 
-    public struct EventAlliances: Codable {
+    public struct EventAlliances: Codable, Hashable {
         public let alliances: [Alliance]?
         public let count: Int
 
-        public struct Alliance: Codable {
+        public struct Alliance: Codable, Hashable {
             public let number: Int
             public let name: String?
             public let captain: Int?
@@ -251,10 +251,10 @@ public struct FTCAPIV2Data {
         }
     }
 
-    public struct EventMatchResults: Codable {
+    public struct EventMatchResults: Codable, Hashable {
         public let matches: [MatchResult]?
 
-        public struct MatchResult: Codable {
+        public struct MatchResult: Codable, Hashable {
             public let actualStartTime: String?
             public let description: String?
             public let tournamentLevel: TournamentLevel?
@@ -270,7 +270,7 @@ public struct FTCAPIV2Data {
             public let teams: [Team]?
             public let modifiedOn: String?
 
-            public struct Team: Codable {
+            public struct Team: Codable, Hashable {
                 public let teamNumber: Int
                 public let station: String?
                 public let dq: Bool
@@ -375,13 +375,13 @@ public struct FTCAPIV2Data {
         case centerstageSingleTeam(ScoreDetails<Centerstage.SingleTeam>)
         case intoTheDeep(ScoreDetails<IntoTheDeep>)
 
-        public struct Skystone: MatchScoreDetailsItem, Codable {
+        public struct Skystone: MatchScoreDetailsItem, Codable, Hashable {
             public let matchLevel: FTCEventLevel
             public let matchSeries: Int
             public let matchNumber: Int
             public let alliances: [AllianceScores]?
 
-            public struct AllianceScores: Codable {
+            public struct AllianceScores: Codable, Hashable {
                 public let alliance: String?
                 public let robot1Navigated: Bool
                 public let robot1Parked: Bool
@@ -418,7 +418,7 @@ public struct FTCAPIV2Data {
                 public let totalPoints: Int
             }
 
-            public enum Stone: String, Codable {
+            public enum Stone: String, Codable, Hashable {
                 case none = "NONE"
                 case stone = "STONE"
                 case skystone = "SKYSTONE"
@@ -426,13 +426,13 @@ public struct FTCAPIV2Data {
         }
 
         public struct UltimateGoal {
-            public struct Alliance: MatchScoreDetailsItem, Codable {
+            public struct Alliance: MatchScoreDetailsItem, Codable, Hashable {
                 public let matchLevel: FTCEventLevel
                 public let matchSeries: Int
                 public let matchNumber: Int
                 public let alliances: [AllianceScores]?
 
-                public struct AllianceScores: Codable {
+                public struct AllianceScores: Codable, Hashable {
                     public let adjust: Int
                     public let dcPoints: Int
                     public let autoPoints: Int
@@ -473,13 +473,13 @@ public struct FTCAPIV2Data {
                 }
             }
 
-            public struct SingleTeam: MatchScoreDetailsItem, Codable {
+            public struct SingleTeam: MatchScoreDetailsItem, Codable, Hashable {
                 public let matchLevel: FTCEventLevel
                 public let matchNumber: Int
                 public let teamNumber: Int
                 public let scores: Scores
 
-                public struct Scores: Codable {
+                public struct Scores: Codable, Hashable {
                     public let adjust: Int
                     public let dcPoints: Int
                     public let autoPoints: Int
@@ -520,14 +520,14 @@ public struct FTCAPIV2Data {
         }
 
         public struct FreightFrenzy {
-            public struct Alliance: MatchScoreDetailsItem, Codable {
+            public struct Alliance: MatchScoreDetailsItem, Codable, Hashable {
                 public let matchLevel: FTCEventLevel
                 public let matchSeries: Int
                 public let matchNumber: Int
                 public let randomization: Int
                 public let alliances: [AllianceScores]?
 
-                public struct AllianceScores: Codable {
+                public struct AllianceScores: Codable, Hashable {
                     public let alliance: String?
                     public let barcodeElement1: BarcodeElement
                     public let barcodeElement2: BarcodeElement
@@ -573,14 +573,14 @@ public struct FTCAPIV2Data {
                 }
             }
 
-            public struct SingleTeam: MatchScoreDetailsItem, Codable {
+            public struct SingleTeam: MatchScoreDetailsItem, Codable, Hashable {
                 public var matchLevel: FTCEventLevel
                 public var matchNumber: Int
                 public var randomization: Int
                 public var teamNumber: Int
                 public var scores: Scores
 
-                public struct Scores: Codable {
+                public struct Scores: Codable, Hashable {
                     public var barcodeElement: BarcodeElement
                     public var carousel: Bool
                     public var autoNavigated: AutoNavigatedStatus
@@ -617,12 +617,12 @@ public struct FTCAPIV2Data {
                 }
             }
 
-            public enum BarcodeElement: String, Codable {
+            public enum BarcodeElement: String, Codable, Hashable {
                 case duck = "DUCK"
                 case teamShippingElement = "TEAM_SHIPPING_ELEMENT"
             }
 
-            public enum AutoNavigatedStatus: String, Codable {
+            public enum AutoNavigatedStatus: String, Codable, Hashable {
                 case none = "NONE"
                 case inStorage = "IN_STORAGE"
                 case completelyInStorage = "COMPLETELY_IN_STORAGE"
@@ -630,7 +630,7 @@ public struct FTCAPIV2Data {
                 case completelyInWarehouse = "COMPLETELY_IN_WAREHOUSE"
             }
 
-            public enum EndgameParkedStatus: String, Codable {
+            public enum EndgameParkedStatus: String, Codable, Hashable {
                 case none = "NONE"
                 case inWarehouse = "IN_WAREHOUSE"
                 case completelyInWarehouse = "COMPLETELY_IN_WAREHOUSE"
@@ -638,14 +638,14 @@ public struct FTCAPIV2Data {
         }
 
         public struct Powerplay {
-            public struct Alliance: MatchScoreDetailsItem, Codable {
+            public struct Alliance: MatchScoreDetailsItem, Codable, Hashable {
                 public var matchLevel: FTCEventLevel
                 public var matchSeries: Int
                 public var matchNumber: Int
                 public var randomization: Int
                 public var alliances: [AllianceScores]?
 
-                public struct AllianceScores: Codable {
+                public struct AllianceScores: Codable, Hashable {
                     public var sideOfField: FieldSide
                     public var initSignalSleeve1: Bool
                     public var initSignalSleeve2: Bool
@@ -685,14 +685,14 @@ public struct FTCAPIV2Data {
                 }
             }
 
-            public struct SingleTeam: MatchScoreDetailsItem, Codable {
+            public struct SingleTeam: MatchScoreDetailsItem, Codable, Hashable {
                 public var matchLevel: FTCEventLevel
                 public var matchNumber: Int
                 public var randomization: Int
                 public var teamNumber: Int
                 public var scores: Scores
 
-                public struct Scores: Codable {
+                public struct Scores: Codable, Hashable {
                     public var initSignalSleeve: Bool
                     public var robotAuto: AutoNavigation
                     public var autoTerminal: Int
@@ -725,18 +725,18 @@ public struct FTCAPIV2Data {
                 }
             }
 
-            public enum FieldSide: String, Codable {
+            public enum FieldSide: String, Codable, Hashable {
                 case scoringSide = "SCORING_SIDE"
                 case audienceSide = "AUDIENCE_SIDE"
             }
 
-            public enum AutoNavigation: String, Codable {
+            public enum AutoNavigation: String, Codable, Hashable {
                 case none = "NONE"
                 case substationTerminal = "SUBSTATION_TERMINAL"
                 case signalZone = "SIGNAL_ZONE"
             }
 
-            public enum JunctionElement: String, Codable {
+            public enum JunctionElement: String, Codable, Hashable {
                 case myCone = "MY_CONE"
                 case otherCone = "OTHER_CONE"
                 case myR1Beacon = "MY_R1_BEACON"
@@ -747,14 +747,14 @@ public struct FTCAPIV2Data {
         }
 
         public struct Centerstage {
-            public struct Alliance: MatchScoreDetailsItem, Codable {
+            public struct Alliance: MatchScoreDetailsItem, Codable, Hashable {
                 public var matchLevel: FTCEventLevel
                 public var matchSeries: Int
                 public var matchNumber: Int
                 public var randomization: Int
                 public var alliances: [AllianceScores]?
 
-                public struct AllianceScores: Codable {
+                public struct AllianceScores: Codable, Hashable {
                     public var initTeamProp1: Bool
                     public var initTeamProp2: Bool
                     public var robot1Auto: Bool
@@ -796,14 +796,14 @@ public struct FTCAPIV2Data {
                 }
             }
 
-            public struct SingleTeam: MatchScoreDetailsItem, Codable {
+            public struct SingleTeam: MatchScoreDetailsItem, Codable, Hashable {
                 public var matchLevel: FTCEventLevel
                 public var matchNumber: Int
                 public var randomization: Int
                 public var teamNumber: Int
                 public var scores: Scores
 
-                public struct Scores: Codable {
+                public struct Scores: Codable, Hashable {
                     public var initTeamProp: Bool
                     public var robotAuto: Bool
                     public var spikeMarkPixel: Bool
@@ -837,21 +837,21 @@ public struct FTCAPIV2Data {
                 }
             }
 
-            public enum EndGameLocation: String, Codable {
+            public enum EndGameLocation: String, Codable, Hashable {
                 case none = "NONE"
                 case backstage = "BACKSTAGE"
                 case rigging = "RIGGING"
             }
         }
 
-        public struct IntoTheDeep: MatchScoreDetailsItem, Codable {
+        public struct IntoTheDeep: MatchScoreDetailsItem, Codable, Hashable {
             public var matchLevel: FTCEventLevel
             public var matchSeries: Int
             public var matchNumber: Int
             public var randomization: Int
             public var alliances: [AllianceScores]?
 
-            public struct AllianceScores: Codable {
+            public struct AllianceScores: Codable, Hashable {
                 public var robot1Auto: AutoLocation
                 public var robot2Auto: AutoLocation
 
@@ -889,13 +889,13 @@ public struct FTCAPIV2Data {
                 public var team: Int
             }
 
-            public enum AutoLocation: String, Codable {
+            public enum AutoLocation: String, Codable, Hashable {
                 case none = "NONE"
                 case observationZone = "OBSERVATION_ZONE"
                 case ascent = "ASCENT"
             }
 
-            public enum TeleopLocation: String, Codable {
+            public enum TeleopLocation: String, Codable, Hashable {
                 case none = "NONE"
                 case observationZone = "OBSERVATION_ZONE"
                 case ascent1 = "ASCENT_1"
@@ -905,21 +905,21 @@ public struct FTCAPIV2Data {
         }
     }
 
-    public struct ScoreDetails<T: MatchScoreDetailsItem>: Codable {
+    public struct ScoreDetails<T: MatchScoreDetailsItem>: Codable, Hashable {
         public var matchScores: [T]?
     }
 
-    public struct AllianceSelectionDetails: Codable {
+    public struct AllianceSelectionDetails: Codable, Hashable {
         public let selections: [Selection]?
         public let count: Int
 
-        public struct Selection: Codable {
+        public struct Selection: Codable, Hashable {
             public let index: Int
             public let team: Int
             public let result: SelectionResult
         }
 
-        public enum SelectionResult: String, Codable {
+        public enum SelectionResult: String, Codable, Hashable {
             case accept = "ACCEPT"
             case decline = "DECLINE"
             case remove = "REMOVE"
@@ -927,10 +927,10 @@ public struct FTCAPIV2Data {
         }
     }
 
-    public struct AwardsListing: Codable {
+    public struct AwardsListing: Codable, Hashable {
         public let awards: [Award]?
 
-        public struct Award: Codable {
+        public struct Award: Codable, Hashable {
             public let awardId: Int
             public let name: String?
             public let description: String?
@@ -938,10 +938,10 @@ public struct FTCAPIV2Data {
         }
     }
 
-    public struct ReceivedAwards: Codable {
+    public struct ReceivedAwards: Codable, Hashable {
         public let awards: [AwardAssignment]?
 
-        public struct AwardAssignment: Codable {
+        public struct AwardAssignment: Codable, Hashable {
             public let awardId: Int
             public let teamId: Int?
             public let teamProfileId: Int?
@@ -957,7 +957,7 @@ public struct FTCAPIV2Data {
         }
     }
 
-    public struct EventAdvancement: Codable {
+    public struct EventAdvancement: Codable, Hashable {
         public let advancesTo: String?
         public let slots: Int
         public let advancement: [AdvancementOrder]?
@@ -965,14 +965,14 @@ public struct FTCAPIV2Data {
 
     public typealias AdvancementSource = [AdvancementSourceItem]
 
-    public struct AdvancementSourceItem: Codable {
+    public struct AdvancementSourceItem: Codable, Hashable {
         public let advancedFrom: String?
         public let advancedFromRegion: String?
         public let slots: Int
         public let advancement: [AdvancementOrder]?
     }
 
-    public struct TeamRanking: Codable {
+    public struct TeamRanking: Codable, Hashable {
         public let rank: Int
         public let teamNumber: Int
         public let displayTeamNumber: String?
@@ -992,7 +992,7 @@ public struct FTCAPIV2Data {
         public let matchesCounted: Int
     }
 
-    public enum TournamentLevel: String, Codable, RawRepresentable {
+    public enum TournamentLevel: String, Codable, Hashable, RawRepresentable {
         case qualification = "QUALIFICATION"
         case playoff = "PLAYOFF"
 
@@ -1006,7 +1006,7 @@ public struct FTCAPIV2Data {
         }
     }
 
-    public struct AdvancementOrder: Codable {
+    public struct AdvancementOrder: Codable, Hashable {
         public let team: Int?
         public let teamId: Int?
         public let teamProfileId: Int?
@@ -1017,7 +1017,7 @@ public struct FTCAPIV2Data {
         public let declined: Bool
         public let status: APIAdvancementStatus
 
-        public enum APIAdvancementStatus: String, Codable {
+        public enum APIAdvancementStatus: String, Codable, Hashable {
             case null = "NULL"
             case first = "FIRST"
             case alreadyAdvancing = "ALREADY_ADVANCING"
@@ -1027,12 +1027,12 @@ public struct FTCAPIV2Data {
     }
 }
 
-public protocol MatchScoreDetailsItem: Codable {
+public protocol MatchScoreDetailsItem: Codable, Hashable {
     var matchLevel: FTCEventLevel { get }
     var matchNumber: Int { get }
 }
 
-public enum FTCEventLevel: String, Codable {
+public enum FTCEventLevel: String, Codable, Hashable {
     case practice = "PRACTICE"
     case qualification = "QUALIFICATION"
     case semifinal = "SEMIFINAL"

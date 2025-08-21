@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct DecodeGameScores: Codable {
+public struct DecodeGameScores: Codable, Hashable {
     public var blue: AllianceScores
     public var red: AllianceScores
 
@@ -16,7 +16,7 @@ public struct DecodeGameScores: Codable {
         self.red = .init()
     }
 
-    public struct AllianceScores: Codable {
+    public struct AllianceScores: Codable, Hashable {
         public var auto: StageScores
         public var teleop: StageScores
         public var minorFoulsFromOtherAllianceAwarded: Int
@@ -29,7 +29,7 @@ public struct DecodeGameScores: Codable {
             self.majorFoulsFromOtherAllianceAwarded = 0
         }
 
-        public struct StageScores: Codable {
+        public struct StageScores: Codable, Hashable {
             public var gameElementZone0: Int
             public var gameElementZone1: Int
             public var team1Location: Location
@@ -42,7 +42,7 @@ public struct DecodeGameScores: Codable {
                 self.team2Location = .none
             }
 
-            public enum Location: String, Codable, RawRepresentable {
+            public enum Location: String, Codable, Hashable, RawRepresentable {
                 case none = "None"
 
                 public var autoDescription: String {

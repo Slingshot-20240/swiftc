@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GameTeamsV1: Codable {
+public struct GameTeamsV1: Codable, Hashable {
     public var blue: AllianceTeams
     public var red: AllianceTeams
 
@@ -16,7 +16,7 @@ public struct GameTeamsV1: Codable {
         self.red = .init()
     }
 
-    public struct AllianceTeams: Codable {
+    public struct AllianceTeams: Codable, Hashable {
         public var one: String?
         public var two: String?
 

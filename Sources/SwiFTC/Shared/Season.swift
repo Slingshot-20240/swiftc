@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum FIRSTSeason: String, Codable, Sendable, RawRepresentable {
+public enum FIRSTSeason: String, Codable, Hashable, Sendable, RawRepresentable {
     case rise = "RISE"
     case gameChangers = "GAME CHANGERS"
     case forward = "FORWARD"
@@ -71,7 +71,7 @@ public enum FIRSTSeason: String, Codable, Sendable, RawRepresentable {
     }
 }
 
-public enum FTCSeason: String, Codable, Sendable, RawRepresentable {
+public enum FTCSeason: String, Codable, Hashable, Sendable, RawRepresentable {
     case skystone = "SKYSTONE"
     case ultimateGoal = "ULTIMATE GOAL"
     case freightFrenzy = "FREIGHT FRENZY"

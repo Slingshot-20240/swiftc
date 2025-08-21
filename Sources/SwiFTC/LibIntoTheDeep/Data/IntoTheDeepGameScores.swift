@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct IntoTheDeepGameScores: Codable {
+public struct IntoTheDeepGameScores: Codable, Hashable {
     public var blue: AllianceScores
     public var red: AllianceScores
 
@@ -16,7 +16,7 @@ public struct IntoTheDeepGameScores: Codable {
         self.red = .init()
     }
 
-    public struct AllianceScores: Codable {
+    public struct AllianceScores: Codable, Hashable {
         public var auto: StageScores
         public var teleop: StageScores
         public var minorFoulsFromOtherAllianceAwarded: Int
@@ -29,7 +29,7 @@ public struct IntoTheDeepGameScores: Codable {
             self.majorFoulsFromOtherAllianceAwarded = 0
         }
 
-        public struct StageScores: Codable {
+        public struct StageScores: Codable, Hashable {
             public var samplesNet: Int
             public var samplesLow: Int
             public var samplesHigh: Int
@@ -48,7 +48,7 @@ public struct IntoTheDeepGameScores: Codable {
                 self.team2Location = .none
             }
 
-            public enum Location: String, Codable, RawRepresentable {
+            public enum Location: String, Codable, Hashable, RawRepresentable {
                 case none = "None"
                 case oZone = "Observation Zone"
                 case aZone = "Ascent Zone"

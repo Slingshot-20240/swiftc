@@ -11,7 +11,7 @@ import Testing
 
 @testable import SwiFTC
 
-struct TestData: Codable, Sendable {
+struct TestData: Codable, Hashable, Sendable {
 
 }
 

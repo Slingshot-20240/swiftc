@@ -50,7 +50,7 @@ The above credentials are invalid and are for demonstration purposes only.
 
 ### Disclaimer
 
-*FIRST®, FIRST® Tech Challenge, FTC®, FIRST® RISE℠, SKYSTONE℠, FIRST® GAME CHANGERS℠, ULTIMATE GOAL℠, FIRST® FORWARD℠, FREIGHT FRENZY℠, FIRST® ENERGIZE℠, POWERPLAY℠, FIRST® IN SHOW℠, CENTERSTAGE℠, FIRST® DIVE℠, INTO THE DEEP℠, FIRST® AGE™, and DECODE™, are trademarks of For Inspiration and Recognition of Science and Technology (FIRST®) (www.firstinspires.org). These trademarks are used by special permission of FIRST which is not overseeing, involved with, or responsible for this activity, product, or service. © 2025 FIRST®. Used by special permission. All rights reserved.*
+***FIRST®, FIRST® Tech Challenge, FTC®, FIRST® RISE℠, SKYSTONE℠, FIRST® GAME CHANGERS℠, ULTIMATE GOAL℠, FIRST® FORWARD℠, FREIGHT FRENZY℠, FIRST® ENERGIZE℠, POWERPLAY℠, FIRST® IN SHOW℠, CENTERSTAGE℠, FIRST® DIVE℠, INTO THE DEEP℠, FIRST® AGE™, and DECODE™, are trademarks of For Inspiration and Recognition of Science and Technology (FIRST®) (www.firstinspires.org). These trademarks are used by special permission of FIRST which is not overseeing, involved with, or responsible for this activity, product, or service. © 2025 FIRST®. Used by special permission. All rights reserved.***
 
 FTC API services: https://ftc-events.firstinspires.org/services/API
 

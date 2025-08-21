@@ -10,7 +10,7 @@ import Testing
 
 @testable import SwiFTC
 
-struct FTCAPIV2TestConfig: Codable, Sendable {
+struct FTCAPIV2TestConfig: Codable, Hashable, Sendable {
     let season: FTCSeason
     let username: String
     let token: String
