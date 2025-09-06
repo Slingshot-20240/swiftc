@@ -5,10 +5,10 @@ import PackageDescription
 let package = Package(
     name: "SwiFTC",
     platforms: [
-        .iOS(.v13),
-        .watchOS(.v6),
-        .tvOS(.v13),
-        .macOS(.v10_15),
+        .iOS(.v16),
+        .watchOS(.v9),
+        .tvOS(.v16),
+        .macOS(.v13),
         .visionOS(.v1),
     ],
     products: [
