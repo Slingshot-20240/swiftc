@@ -47,7 +47,7 @@ public struct DecodeGameScores: Codable, Hashable {
 
             public enum Location: String, Codable, Hashable, RawRepresentable {
                 case none = "None"
-                case leave = "Leave"
+                case left = "Leave"
 
                 public var description: String {
                     self.rawValue
@@ -57,7 +57,7 @@ public struct DecodeGameScores: Codable, Hashable {
                     switch self {
                     case .none:
                         "nosign"
-                    case .leave:
+                    case .left:
                         "rectangle.portrait.and.arrow.forward"
                     }
                 }
@@ -66,7 +66,7 @@ public struct DecodeGameScores: Codable, Hashable {
                     switch self {
                     case .none:
                         0
-                    case .leave:
+                    case .left:
                         3
                     }
                 }
@@ -138,6 +138,8 @@ public struct DecodeGameScores: Codable, Hashable {
                     + self.matchingMotifs * 2
                     + self.team1Location.points
                     + self.team2Location.points
+                    + (self.team1Location == .full
+                        && self.team2Location == .full ? 10 : 0)
             }
         }
 
