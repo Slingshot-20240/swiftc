@@ -10,10 +10,12 @@ import Foundation
 public struct DecodeGameScores: Codable, Hashable {
     public var blue: AllianceScores
     public var red: AllianceScores
+    public var randomization: Randomization?
 
     public init() {
         self.blue = .init()
         self.red = .init()
+        self.randomization = nil
     }
 
     public struct AllianceScores: Codable, Hashable {
@@ -152,6 +154,12 @@ public struct DecodeGameScores: Codable, Hashable {
             return self.auto.total + self.teleop.total
                 + self.foulPointsFromOtherAllianceAwarded
         }
+    }
+    
+    public enum Randomization: Int, Codable, Hashable {
+        case gpp = 21
+        case pgp = 22
+        case ppg = 23
     }
 
     public var total: Int {
