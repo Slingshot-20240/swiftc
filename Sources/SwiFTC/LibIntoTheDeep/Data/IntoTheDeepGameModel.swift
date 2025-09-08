@@ -12,9 +12,19 @@ import SwiftData
 @Model
 public final class IntoTheDeepGameModel {
     public var id: String
-    @Attribute(.externalStorage) public var teams: GameTeamsV1
-    @Attribute(.externalStorage) public var scores: IntoTheDeepGameScores
+    @Attribute(.externalStorage) private var _teams: GameTeamsV1?
+    @Attribute(.externalStorage) private var _scores: IntoTheDeepGameScores?
     public var timestamp: Date
+
+    public var teams: GameTeamsV1 {
+        get { _teams ?? .init() }
+        set { _teams = newValue }
+    }
+
+    public var scores: IntoTheDeepGameScores {
+        get { _scores ?? .init() }
+        set { _scores = newValue }
+    }
 
     public init(
         scores: IntoTheDeepGameScores,
@@ -22,8 +32,8 @@ public final class IntoTheDeepGameModel {
         timestamp: Date = Date()
     ) {
         self.id = UUID().uuidString
-        self.teams = teams
-        self.scores = scores
-        self.timestamp = Date()
+        self._teams = teams
+        self._scores = scores
+        self.timestamp = timestamp
     }
 }
