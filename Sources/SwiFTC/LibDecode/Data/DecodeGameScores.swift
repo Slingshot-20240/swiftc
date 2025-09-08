@@ -121,7 +121,7 @@ public struct DecodeGameScores: Codable, Hashable {
                     case .partial:
                         "square.dashed"
                     case .full:
-                        "square"
+                        "square.fill"
                     }
                 }
 
@@ -150,18 +150,17 @@ public struct DecodeGameScores: Codable, Hashable {
         }
         
         public struct Motifs: Codable, Hashable {
-            public var p1: Artifact
-            public var p2: Artifact
-            public var p3: Artifact
-            public var p4: Artifact
-            public var p5: Artifact
-            public var p6: Artifact
-            public var p7: Artifact
-            public var p8: Artifact
-            public var p9: Artifact
+            public var p1: Artifact?
+            public var p2: Artifact?
+            public var p3: Artifact?
+            public var p4: Artifact?
+            public var p5: Artifact?
+            public var p6: Artifact?
+            public var p7: Artifact?
+            public var p8: Artifact?
+            public var p9: Artifact?
             
             public enum Artifact: String, Codable, Hashable {
-                case none = "None"
                 case green = "Green"
                 case purple = "Purple"
             }
