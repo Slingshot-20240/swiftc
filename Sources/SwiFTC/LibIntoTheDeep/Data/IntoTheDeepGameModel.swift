@@ -12,8 +12,8 @@ import SwiftData
 @Model
 public final class IntoTheDeepGameModel {
     public var id: String
-    public var teams: GameTeamsV1
-    public var scores: IntoTheDeepGameScores
+    @Attribute(.externalStorage) public var teams: GameTeamsV1
+    @Attribute(.externalStorage) public var scores: IntoTheDeepGameScores
     public var timestamp: Date
 
     public init(

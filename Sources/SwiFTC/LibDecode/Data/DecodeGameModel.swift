@@ -12,8 +12,8 @@ import SwiftData
 @Model
 public final class DecodeGameModel {
     public var id: String
-    public var teams: GameTeamsV1
-    public var scores: DecodeGameScores
+    @Attribute(.externalStorage) public var teams: GameTeamsV1
+    @Attribute(.externalStorage) public var scores: DecodeGameScores
     public var timestamp: Date
 
     public init(
