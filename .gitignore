@@ -6,4 +6,4 @@ DerivedData/
 .swiftpm/configuration/registries.json
 .swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 .netrc
-Tests/FTCAPITestConfig.json
+Tests/FTCAPIV2Tests/FTCAPIV2TestConfig.json

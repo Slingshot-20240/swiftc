@@ -14,10 +14,16 @@ public final class IntoTheDeepGameModel {
     public var id: String
     public var teams: GameTeamsV1
     public var scores: IntoTheDeepGameScores
+    public var timestamp: Date
 
-    public init(scores: IntoTheDeepGameScores, teams: GameTeamsV1 = .init()) {
+    public init(
+        scores: IntoTheDeepGameScores,
+        teams: GameTeamsV1 = .init(),
+        timestamp: Date = Date()
+    ) {
         self.id = UUID().uuidString
         self.teams = teams
         self.scores = scores
+        self.timestamp = Date()
     }
 }

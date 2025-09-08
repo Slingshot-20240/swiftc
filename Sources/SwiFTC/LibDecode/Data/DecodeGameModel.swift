@@ -14,10 +14,16 @@ public final class DecodeGameModel {
     public var id: String
     public var teams: GameTeamsV1
     public var scores: DecodeGameScores
+    public var timestamp: Date
 
-    public init(scores: DecodeGameScores, teams: GameTeamsV1 = .init()) {
+    public init(
+        scores: DecodeGameScores,
+        teams: GameTeamsV1 = .init(),
+        timestamp: Date = Date()
+    ) {
         self.id = UUID().uuidString
         self.teams = teams
         self.scores = scores
+        self.timestamp = Date()
     }
 }
