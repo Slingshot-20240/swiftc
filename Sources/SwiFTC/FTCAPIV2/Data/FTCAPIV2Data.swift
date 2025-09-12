@@ -52,7 +52,7 @@ public struct FTCAPIV2Data {
         return try Self.decoder.decode(type, from: data)
     }
 
-    public struct APIIndex: Codable, Hashable {
+    public struct APIIndex: SwiFTCDataConformable {
         public let name: String?
         public let apiName: String?
         public let apiVersion: String?
@@ -65,7 +65,7 @@ public struct FTCAPIV2Data {
         public let maxSeason: Int
     }
 
-    public struct SeasonSummary: Codable, Hashable {
+    public struct SeasonSummary: SwiFTCDataConformable {
         public let eventCount: Int
         public let gameName: String?
         public let kickoff: Date?
@@ -73,18 +73,18 @@ public struct FTCAPIV2Data {
         public let teamCount: Int
         public let frcChampionships: [ChampionshipDescription]?
 
-        public struct ChampionshipDescription: Codable, Hashable {
+        public struct ChampionshipDescription: SwiFTCDataConformable {
             public let name: String?
             public let startDate: Date?
             public let location: String?
         }
     }
 
-    public struct LeagueListings: Codable, Hashable {
+    public struct LeagueListings: SwiFTCDataConformable {
         public let leagues: [League]?
         public let leagueCount: Int
 
-        public struct League: Codable, Hashable {
+        public struct League: SwiFTCDataConformable {
             public let region: String?
             public let code: String?
             public let name: String?
@@ -95,22 +95,22 @@ public struct FTCAPIV2Data {
         }
     }
 
-    public struct LeagueMembership: Codable, Hashable {
+    public struct LeagueMembership: SwiFTCDataConformable {
         public let members: [Int]?
     }
 
-    public struct LeagueRankings: Codable, Hashable {
+    public struct LeagueRankings: SwiFTCDataConformable {
         public let rankings: [TeamRanking]?
     }
 
-    public struct TeamListings: Codable, Hashable {
+    public struct TeamListings: SwiFTCDataConformable {
         public let teams: [Team]?
         public let teamCountTotal: Int
         public let teamCountPage: Int
         public let pageCurrent: Int
         public let pageTotal: Int
 
-        public struct Team: Codable, Hashable {
+        public struct Team: SwiFTCDataConformable {
             public let teamNumber: Int
             public let displayTeamNumber: String?
             public let nameFull: String?
@@ -129,11 +129,11 @@ public struct FTCAPIV2Data {
         }
     }
 
-    public struct EventListings: Codable, Hashable {
+    public struct EventListings: SwiFTCDataConformable {
         public let events: [EventListings.Event]?
         public let eventCount: Int
 
-        public struct Event: Codable, Hashable {
+        public struct Event: SwiFTCDataConformable {
             public let eventId: String
             public let code: String?
             public let divisionCode: String?
@@ -160,17 +160,17 @@ public struct FTCAPIV2Data {
             public let dateStart: Date
             public let dateEnd: Date
 
-            public struct Coordinates: Codable, Hashable {
+            public struct Coordinates: SwiFTCDataConformable {
                 public let type: String
                 public let coordinates: [Double]
             }
         }
     }
 
-    public struct HybridSchedule: Codable, Hashable {
+    public struct HybridSchedule: SwiFTCDataConformable {
         public let schedule: [Match]?
 
-        public struct Match: Codable, Hashable {
+        public struct Match: SwiFTCDataConformable {
             public let description: String?
             public let tournamentLevel: TournamentLevel?
             public let series: Int
@@ -190,7 +190,7 @@ public struct FTCAPIV2Data {
             public let blueWins: Bool?
             public let teams: [Team]?
 
-            public struct Team: Codable, Hashable {
+            public struct Team: SwiFTCDataConformable {
                 public let teamNumber: Int?
                 public let displayTeamNumber: String?
                 public let station: String?
@@ -203,10 +203,10 @@ public struct FTCAPIV2Data {
         }
     }
 
-    public struct EventSchedule: Codable, Hashable {
+    public struct EventSchedule: SwiFTCDataConformable {
         public let schedule: [ScheduledMatch]?
 
-        public struct ScheduledMatch: Codable, Hashable {
+        public struct ScheduledMatch: SwiFTCDataConformable {
             public let description: String?
             public let field: String?
             public let tournamentLevel: TournamentLevel?
@@ -216,7 +216,7 @@ public struct FTCAPIV2Data {
             public let teams: [Team]?
             public let modifiedOn: Date?
 
-            public struct Team: Codable, Hashable {
+            public struct Team: SwiFTCDataConformable {
                 public let teamNumber: Int?
                 public let displayTeamNumber: String?
                 public let station: String?
@@ -228,15 +228,15 @@ public struct FTCAPIV2Data {
         }
     }
 
-    public struct EventRankings: Codable, Hashable {
+    public struct EventRankings: SwiFTCDataConformable {
         public let rankings: [TeamRanking]?
     }
 
-    public struct EventAlliances: Codable, Hashable {
+    public struct EventAlliances: SwiFTCDataConformable {
         public let alliances: [Alliance]?
         public let count: Int
 
-        public struct Alliance: Codable, Hashable {
+        public struct Alliance: SwiFTCDataConformable {
             public let number: Int
             public let name: String?
             public let captain: Int?
@@ -251,10 +251,10 @@ public struct FTCAPIV2Data {
         }
     }
 
-    public struct EventMatchResults: Codable, Hashable {
+    public struct EventMatchResults: SwiFTCDataConformable {
         public let matches: [MatchResult]?
 
-        public struct MatchResult: Codable, Hashable {
+        public struct MatchResult: SwiFTCDataConformable {
             public let actualStartTime: String?
             public let description: String?
             public let tournamentLevel: TournamentLevel?
@@ -270,7 +270,7 @@ public struct FTCAPIV2Data {
             public let teams: [Team]?
             public let modifiedOn: String?
 
-            public struct Team: Codable, Hashable {
+            public struct Team: SwiFTCDataConformable {
                 public let teamNumber: Int
                 public let station: String?
                 public let dq: Bool
@@ -381,7 +381,7 @@ public struct FTCAPIV2Data {
             public let matchNumber: Int
             public let alliances: [AllianceScores]?
 
-            public struct AllianceScores: Codable, Hashable {
+            public struct AllianceScores: SwiFTCDataConformable {
                 public let alliance: String?
                 public let robot1Navigated: Bool
                 public let robot1Parked: Bool
@@ -432,7 +432,7 @@ public struct FTCAPIV2Data {
                 public let matchNumber: Int
                 public let alliances: [AllianceScores]?
 
-                public struct AllianceScores: Codable, Hashable {
+                public struct AllianceScores: SwiFTCDataConformable {
                     public let adjust: Int
                     public let dcPoints: Int
                     public let autoPoints: Int
@@ -479,7 +479,7 @@ public struct FTCAPIV2Data {
                 public let teamNumber: Int
                 public let scores: Scores
 
-                public struct Scores: Codable, Hashable {
+                public struct Scores: SwiFTCDataConformable {
                     public let adjust: Int
                     public let dcPoints: Int
                     public let autoPoints: Int
@@ -527,7 +527,7 @@ public struct FTCAPIV2Data {
                 public let randomization: Int
                 public let alliances: [AllianceScores]?
 
-                public struct AllianceScores: Codable, Hashable {
+                public struct AllianceScores: SwiFTCDataConformable {
                     public let alliance: String?
                     public let barcodeElement1: BarcodeElement
                     public let barcodeElement2: BarcodeElement
@@ -580,7 +580,7 @@ public struct FTCAPIV2Data {
                 public var teamNumber: Int
                 public var scores: Scores
 
-                public struct Scores: Codable, Hashable {
+                public struct Scores: SwiFTCDataConformable {
                     public var barcodeElement: BarcodeElement
                     public var carousel: Bool
                     public var autoNavigated: AutoNavigatedStatus
@@ -645,7 +645,7 @@ public struct FTCAPIV2Data {
                 public var randomization: Int
                 public var alliances: [AllianceScores]?
 
-                public struct AllianceScores: Codable, Hashable {
+                public struct AllianceScores: SwiFTCDataConformable {
                     public var sideOfField: FieldSide
                     public var initSignalSleeve1: Bool
                     public var initSignalSleeve2: Bool
@@ -692,7 +692,7 @@ public struct FTCAPIV2Data {
                 public var teamNumber: Int
                 public var scores: Scores
 
-                public struct Scores: Codable, Hashable {
+                public struct Scores: SwiFTCDataConformable {
                     public var initSignalSleeve: Bool
                     public var robotAuto: AutoNavigation
                     public var autoTerminal: Int
@@ -754,7 +754,7 @@ public struct FTCAPIV2Data {
                 public var randomization: Int
                 public var alliances: [AllianceScores]?
 
-                public struct AllianceScores: Codable, Hashable {
+                public struct AllianceScores: SwiFTCDataConformable {
                     public var initTeamProp1: Bool
                     public var initTeamProp2: Bool
                     public var robot1Auto: Bool
@@ -803,7 +803,7 @@ public struct FTCAPIV2Data {
                 public var teamNumber: Int
                 public var scores: Scores
 
-                public struct Scores: Codable, Hashable {
+                public struct Scores: SwiFTCDataConformable {
                     public var initTeamProp: Bool
                     public var robotAuto: Bool
                     public var spikeMarkPixel: Bool
@@ -851,7 +851,7 @@ public struct FTCAPIV2Data {
             public var randomization: Int
             public var alliances: [AllianceScores]?
 
-            public struct AllianceScores: Codable, Hashable {
+            public struct AllianceScores: SwiFTCDataConformable {
                 public var robot1Auto: AutoLocation
                 public var robot2Auto: AutoLocation
 
@@ -905,15 +905,15 @@ public struct FTCAPIV2Data {
         }
     }
 
-    public struct ScoreDetails<T: MatchScoreDetailsItem>: Codable, Hashable {
+    public struct ScoreDetails<T: MatchScoreDetailsItem>: SwiFTCDataConformable {
         public var matchScores: [T]?
     }
 
-    public struct AllianceSelectionDetails: Codable, Hashable {
+    public struct AllianceSelectionDetails: SwiFTCDataConformable {
         public let selections: [Selection]?
         public let count: Int
 
-        public struct Selection: Codable, Hashable {
+        public struct Selection: SwiFTCDataConformable {
             public let index: Int
             public let team: Int
             public let result: SelectionResult
@@ -927,10 +927,10 @@ public struct FTCAPIV2Data {
         }
     }
 
-    public struct AwardsListing: Codable, Hashable {
+    public struct AwardsListing: SwiFTCDataConformable {
         public let awards: [Award]?
 
-        public struct Award: Codable, Hashable {
+        public struct Award: SwiFTCDataConformable {
             public let awardId: Int
             public let name: String?
             public let description: String?
@@ -938,10 +938,10 @@ public struct FTCAPIV2Data {
         }
     }
 
-    public struct ReceivedAwards: Codable, Hashable {
+    public struct ReceivedAwards: SwiFTCDataConformable {
         public let awards: [AwardAssignment]?
 
-        public struct AwardAssignment: Codable, Hashable {
+        public struct AwardAssignment: SwiFTCDataConformable {
             public let awardId: Int
             public let teamId: Int?
             public let teamProfileId: Int?
@@ -957,7 +957,7 @@ public struct FTCAPIV2Data {
         }
     }
 
-    public struct EventAdvancement: Codable, Hashable {
+    public struct EventAdvancement: SwiFTCDataConformable {
         public let advancesTo: String?
         public let slots: Int
         public let advancement: [AdvancementOrder]?
@@ -965,14 +965,14 @@ public struct FTCAPIV2Data {
 
     public typealias AdvancementSource = [AdvancementSourceItem]
 
-    public struct AdvancementSourceItem: Codable, Hashable {
+    public struct AdvancementSourceItem: SwiFTCDataConformable {
         public let advancedFrom: String?
         public let advancedFromRegion: String?
         public let slots: Int
         public let advancement: [AdvancementOrder]?
     }
 
-    public struct TeamRanking: Codable, Hashable {
+    public struct TeamRanking: SwiFTCDataConformable {
         public let rank: Int
         public let teamNumber: Int
         public let displayTeamNumber: String?
@@ -1006,7 +1006,7 @@ public struct FTCAPIV2Data {
         }
     }
 
-    public struct AdvancementOrder: Codable, Hashable {
+    public struct AdvancementOrder: SwiFTCDataConformable {
         public let team: Int?
         public let teamId: Int?
         public let teamProfileId: Int?
@@ -1027,7 +1027,7 @@ public struct FTCAPIV2Data {
     }
 }
 
-public protocol MatchScoreDetailsItem: Codable, Hashable {
+public protocol MatchScoreDetailsItem: SwiFTCDataConformable {
     var matchLevel: FTCEventLevel { get }
     var matchNumber: Int { get }
 }

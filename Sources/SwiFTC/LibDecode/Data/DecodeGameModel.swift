@@ -69,7 +69,7 @@ public final class DecodeGameModel {
         if red1 == nil && red2 == nil && blue1 == nil
             && blue2 == nil
         {
-            return .init(red: "", middle: "Game", blue: "")
+            return .init()
         }
 
         return .init(red: redLabel, middle: " v.s. ", blue: blueLabel)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GameLabel {
+public struct GameLabel: SwiFTCDataConformable {
     public var red: String
     public var middle: String
     public var blue: String

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GameTeamsV1: Codable, Hashable {
+public struct GameTeamsV1: SwiFTCDataConformable {
     public var blue: AllianceTeams
     public var red: AllianceTeams
 

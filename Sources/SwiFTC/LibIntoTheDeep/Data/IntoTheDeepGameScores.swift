@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct IntoTheDeepGameScores: Codable, Hashable {
+public struct IntoTheDeepGameScores: SwiFTCDataConformable {
     public var blue: AllianceScores
     public var red: AllianceScores
 
