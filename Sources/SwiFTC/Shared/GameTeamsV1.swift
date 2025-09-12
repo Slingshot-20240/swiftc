@@ -16,7 +16,7 @@ public struct GameTeamsV1: SwiFTCDataConformable {
         self.red = .init()
     }
 
-    public struct AllianceTeams: Codable, Hashable {
+    public struct AllianceTeams: SwiFTCDataConformable {
         public var one: String?
         public var two: String?
 
