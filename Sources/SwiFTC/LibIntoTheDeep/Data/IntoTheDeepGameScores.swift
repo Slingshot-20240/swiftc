@@ -134,6 +134,14 @@ public struct IntoTheDeepGameScores: SwiFTCDataConformable {
         public var totalNf: Int {
             return self.auto.total + self.teleop.total
         }
+
+        public func total(excludeFouls: Bool) -> Int {
+            if excludeFouls {
+                return self.totalNf
+            }
+
+            return self.total
+        }
     }
 
     public var total: Int {
