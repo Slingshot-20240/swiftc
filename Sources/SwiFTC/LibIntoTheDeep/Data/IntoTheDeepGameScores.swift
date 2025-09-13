@@ -130,6 +130,10 @@ public struct IntoTheDeepGameScores: SwiFTCDataConformable {
             return self.auto.total + self.teleop.total
                 + self.foulPointsFromOtherAllianceAwarded
         }
+
+        public var totalNf: Int {
+            return self.auto.total + self.teleop.total
+        }
     }
 
     public var total: Int {

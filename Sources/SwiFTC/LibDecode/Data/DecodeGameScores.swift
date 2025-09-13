@@ -148,7 +148,7 @@ public struct DecodeGameScores: SwiFTCDataConformable {
                         && self.team2Location == .full ? 10 : 0)
             }
         }
-        
+
         public struct Motifs: Codable, Hashable {
             public var p1: Artifact?
             public var p2: Artifact?
@@ -159,7 +159,7 @@ public struct DecodeGameScores: SwiFTCDataConformable {
             public var p7: Artifact?
             public var p8: Artifact?
             public var p9: Artifact?
-            
+
             public enum Artifact: String, Codable, Hashable {
                 case green = "Green"
                 case purple = "Purple"
@@ -175,8 +175,12 @@ public struct DecodeGameScores: SwiFTCDataConformable {
             return self.auto.total + self.teleop.total
                 + self.foulPointsFromOtherAllianceAwarded
         }
+
+        public var totalNf: Int {
+            return self.auto.total + self.teleop.total
+        }
     }
-    
+
     public enum Motif: Int, Codable, Hashable {
         case gpp = 21
         case pgp = 22
