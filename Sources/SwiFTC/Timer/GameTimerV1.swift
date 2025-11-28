@@ -231,6 +231,11 @@ import Foundation
                                 break
                             }
                         }
+
+                        if self.timerStage == .finished {
+                            self.timer?.invalidate()
+                            self.timer = nil
+                        }
                     } catch {
                         self.timer?.invalidate()
                         self.timer = nil
