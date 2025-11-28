@@ -18,6 +18,8 @@ import Foundation
     @Published public var paused: Bool
     @Published public var scoringStage: GameScoringStageV1
 
+    let endgameStartSecondsAfterTeleop: TimeInterval
+
     public var muted: Bool
     let countdownAudio: AVAudioPlayer
     let startAudio: AVAudioPlayer
@@ -32,13 +34,16 @@ import Foundation
         timerStage: Stage = .standby,
         countdown: Int = 3,
         paused: Bool = false,
-        scoringStage: GameScoringStageV1 = .auto
+        scoringStage: GameScoringStageV1 = .auto,
+        endgameStartSecondsAfterTeleop: TimeInterval = 100
     ) {
         self.timer = timer
         self.timerStage = timerStage
         self.countdown = countdown
         self.paused = paused
         self.scoringStage = scoringStage
+
+        self.endgameStartSecondsAfterTeleop = endgameStartSecondsAfterTeleop
 
         func audioPlayer(for name: String) -> AVAudioPlayer {
             let url = URL(
@@ -209,7 +214,8 @@ import Foundation
                                 self.teleopAudio.play()
 
                                 Timer.scheduledTimer(
-                                    withTimeInterval: 89,
+                                    withTimeInterval: self
+                                        .endgameStartSecondsAfterTeleop,
                                     repeats: false
                                 ) { _ in
                                     Task { @MainActor [weak self] in
